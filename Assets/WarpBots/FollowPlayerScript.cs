@@ -28,22 +28,24 @@ public class FollowScript : MonoBehaviour {
 
 	}
 
-	void LateUpdate(){
-		float xOffset = 2;
-		
+	void followPlayer (ref float xOffset)
+	{
 		if (bar.localScale.x > 0) {
 			xOffset = -2;
 		}
-		else{
+		else {
 			xOffset = 2;
 		}
+		float f = Mathf.Lerp (transform.position.x, bar.position.x + xOffset, Time.deltaTime * 1f);
+		transform.position = new Vector3 (f, transform.position.y, transform.position.z);
+	}
 
-		//transform.position = Vector3.Lerp(transform.position, bar.position + new Vector3(xOffset,-1,0), 0.3f);
+	void LateUpdate(){
+		float xOffset = 2;
+		
+		followPlayer (ref xOffset);
 
-		float f =  Mathf.Lerp( transform.position.x, bar.position.x + xOffset, Time.deltaTime * 1f);
-		transform.position = new Vector3(f,
-		                                                             transform.position.y,
-		                                                              transform.position.z);
+
 		Physics2D.IgnoreLayerCollision (10, 11);
 	}
 
