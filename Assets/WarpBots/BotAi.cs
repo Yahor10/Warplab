@@ -3,10 +3,19 @@ using System.Collections;
 
 public class BotAi : MonoBehaviour
 {
+
+
+	public enum Behavior
+	{
+		idle, search,defend, follow, wander, attack, useAbility,death
+	}
+
 	private bool rightDir;
 	Transform bar;
 	float someScale;
 	public float speed = 1.5f;
+
+	public Behavior currentBehaviour;
 	
 	Vector3 startPoint;
 	
@@ -50,7 +59,7 @@ public class BotAi : MonoBehaviour
 	
 	void OnCollisionEnter2D(Collision2D coll)
 	{			
-		
+		Debug.Log ("enter " + coll.gameObject.tag);
 	}
 }
 

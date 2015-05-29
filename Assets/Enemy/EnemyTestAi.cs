@@ -53,6 +53,8 @@ public class EnemyTestAi : MonoBehaviour
 			break;
 		case Behavior.moveToPlayer:
 			dist = Vector2.Distance (character.position, transform.position);
+			if(dist <= 2){
+			}
 			if(dist >= 5){
 				Debug.Log("moveToPlayer is far!" + dist);
 				currentState = Behavior.returnHome;

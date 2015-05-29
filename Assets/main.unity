@@ -166,6 +166,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1.5
+  currentBehaviour: 0
 --- !u!1 &364126991
 GameObject:
   m_ObjectHideFlags: 0
@@ -484,9 +485,10 @@ GameObject:
   - 61: {fileID: 612310770}
   - 50: {fileID: 612310769}
   - 114: {fileID: 612310773}
+  - 114: {fileID: 612310774}
   m_Layer: 0
-  m_Name: CrateGreen
-  m_TagString: Untagged
+  m_Name: CrateRed
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -565,6 +567,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 069ab86e14bdc834883938dd21f2026d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &612310774
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 612310768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 848e10b499c25e149a8fb4e373753d23, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 0
 --- !u!1 &943302553
 GameObject:
   m_ObjectHideFlags: 0
@@ -643,6 +657,14 @@ Prefab:
     - target: {fileID: 400000, guid: 18fcd494ab71841d695135246693eb3a, type: 2}
       propertyPath: m_RootOrder
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 18fcd494ab71841d695135246693eb3a, type: 2}
+      propertyPath: m_Name
+      value: CrateRed
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 18fcd494ab71841d695135246693eb3a, type: 2}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 18fcd494ab71841d695135246693eb3a, type: 2}
