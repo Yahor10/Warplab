@@ -56,7 +56,6 @@ public class FlyEnemyScriptAi : MonoBehaviour {
 			}
 
 			pathisEnded = true;
-			Debug.Log("end of path");
 		}
 
 		pathisEnded = false;

@@ -36,8 +36,11 @@ public class BotAi : MonoBehaviour
 		
 	}
 	
-	void followPlayer (ref float xOffset)
-	{
+	void followPlayer ()
+	{	
+
+		float xOffset = 2;
+
 		if (bar.localScale.x > 0) {
 			xOffset = -2;
 		}
@@ -49,17 +52,15 @@ public class BotAi : MonoBehaviour
 	}
 	
 	void LateUpdate(){
-		float xOffset = 2;
 		
-		followPlayer (ref xOffset);
-		
-		
+		followPlayer ();
+
 		Physics2D.IgnoreLayerCollision (10, 11);
 	}
 	
 	void OnCollisionEnter2D(Collision2D coll)
 	{			
-		Debug.Log ("enter " + coll.gameObject.tag);
+
 	}
 }
 
