@@ -25,7 +25,7 @@ public class FlyBotAi : FlyBotBehaviour
 
  // A mask determining what is ground to the character
 
-	
+	public float targetHeading = 110f; //0deg - 359deg
 	// Use this for initialization
 	void Start ()
 	{
@@ -42,10 +42,19 @@ public class FlyBotAi : FlyBotBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		
+		Vector3 lookDirection = GameObject.Find("FlyEnemy").transform.position - flyBotWeapon.position;
+		float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+		Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+		flyBotWeapon.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 20f);
+
 		if (Input.GetMouseButtonDown (0)) {
 			//Quarternion.Identity = default rotation
 			Rigidbody2D bulletInstance = Instantiate(bullet, flyBotWeapon.position, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
-			bulletInstance.velocity = new Vector2(20f, 0);
+			//bulletInstance.velocity = new Vector2(20f, 0);
+			bulletInstance.velocity = (GameObject.Find("FlyEnemy").transform.position - transform.position).normalized * 30f; 
+
+
 			Destroy(bulletInstance.gameObject,5);	
 		}
 
