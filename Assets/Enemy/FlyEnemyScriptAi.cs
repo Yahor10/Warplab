@@ -21,6 +21,7 @@ public class FlyEnemyScriptAi : MonoBehaviour {
 	public ForceMode2D force;
 	// Use this for initialization
 
+
 	private int currWayPoint = 0;
 	void Start () {
 	
@@ -35,6 +36,8 @@ public class FlyEnemyScriptAi : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	
+		if (Input.GetMouseButtonDown (0)) {
+		}
 	}
 
 	private bool pathisEnded;

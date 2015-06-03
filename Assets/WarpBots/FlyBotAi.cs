@@ -18,6 +18,11 @@ public class FlyBotAi : FlyBotBehaviour
 
 	Transform groundCheck;
 
+	public Rigidbody2D bullet;
+
+	private Transform flyBotWeapon;
+
+
  // A mask determining what is ground to the character
 
 	
@@ -29,17 +34,26 @@ public class FlyBotAi : FlyBotBehaviour
 		InvokeRepeating("flyState",0.2f,0.2f);
 
 		groundCheck = character.Find("GroundCheck");
+
+		flyBotWeapon = transform.FindChild ("FlyBotWeapon");
 		
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
-	
+		if (Input.GetMouseButtonDown (0)) {
+			//Quarternion.Identity = default rotation
+			Rigidbody2D bulletInstance = Instantiate(bullet, flyBotWeapon.position, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
+			bulletInstance.velocity = new Vector2(20f, 0);
+			Destroy(bulletInstance.gameObject,5);	
+		}
+
 	}
 
 	void FixedUpdate () 
 	{
+
 		switch (currentBehaviour) {
 		case Behavior.follow:
 			flyFollowState();
