@@ -195,7 +195,11 @@ public class FlyBotAi : FlyBotBehaviour
 		if(clicked){
 			vd = new Vector2(Input.mousePosition.x -startVector.x, Screen.height - Input.mousePosition.y - startVector.y);
 			Rect rect = new Rect (startVector.x,startVector.y,  vd.x, vd.y);
-	
+
+			Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
+			pos.y = Screen.height - pos.y;
+			Debug.Log("Rect" + rect.Contains(pos));
+
 			DrawRectangle ( new Rect (startVector.x,startVector.y,  vd.x, vd.y), color);        
 		}	
 	}
