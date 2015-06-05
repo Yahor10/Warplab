@@ -108,7 +108,6 @@ public class FlyBotAi : FlyBotBehaviour
 		if (hit) {
 			Debug.Log ("Name" + hit.collider.gameObject.name);
 			Debug.Log ("hit " + hit.collider.gameObject.tag);
-
 		}
 	}    
 
@@ -147,7 +146,6 @@ public class FlyBotAi : FlyBotBehaviour
 
 	void OnCollisionEnter2D(Collision2D coll)
 	{			
-		Debug.Log ("coll" + coll.gameObject.tag);
 	}
 
 	
@@ -167,7 +165,7 @@ public class FlyBotAi : FlyBotBehaviour
 	
 		// We shouldn't draw until we are told to do so.
 		if (Event.current.type != EventType.Repaint) {
-			Debug.LogError ("not Repaint.");
+			// not repaint event
 			return;
 		}
 
@@ -176,9 +174,6 @@ public class FlyBotAi : FlyBotBehaviour
 			Debug.LogError ("You have forgot to set a material.");
 			return;
 		}
-
-		Debug.Log ("try DrawRectangle");
-
 
 		material.SetPass (0);
 		
@@ -199,7 +194,8 @@ public class FlyBotAi : FlyBotBehaviour
 	{        
 		if(clicked){
 			vd = new Vector2(Input.mousePosition.x -startVector.x, Screen.height - Input.mousePosition.y - startVector.y);
-					//GUI.Box(new Rect (startVector.x,startVector.y,vd.x,vd.y), "");
+			Rect rect = new Rect (startVector.x,startVector.y,  vd.x, vd.y);
+	
 			DrawRectangle ( new Rect (startVector.x,startVector.y,  vd.x, vd.y), color);        
 		}	
 	}
@@ -207,7 +203,7 @@ public class FlyBotAi : FlyBotBehaviour
 	// Please assign a material that is using position and color.
 	public Material material;
 
-	public Color color = Color.red;
+	public Color color;
 
 
 }
