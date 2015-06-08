@@ -1,9 +1,9 @@
 using UnityEngine;
 using System.Collections;
 
-public class EnemyTestAi : MonoBehaviour
+public class EnemyMeleeAi : MonoBehaviour
 {
-
+	
 	Transform character;
 	
 	public enum Behavior
@@ -13,9 +13,9 @@ public class EnemyTestAi : MonoBehaviour
 	// Use this for initialization
 	
 	public Behavior currentState = Behavior.idle;
-
+	
 	Vector3 startPosition;
-
+	
 	void Start () {
 		character = GameObject.Find("Character").transform;
 		startPosition = transform.position; //store the start position
@@ -43,7 +43,7 @@ public class EnemyTestAi : MonoBehaviour
 	void Update () {
 		//transform.LookAt(character);
 		float dist = 0.0f;
-
+		
 		switch (currentState) {
 		case Behavior.idle:
 			dist = Vector2.Distance (character.position, transform.position);
@@ -72,6 +72,6 @@ public class EnemyTestAi : MonoBehaviour
 			break;
 		}
 	}
-
+	
 }
 

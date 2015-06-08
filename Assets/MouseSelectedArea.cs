@@ -100,7 +100,7 @@ public class MouseSelectedArea : MonoBehaviour {
 
         GameObject d = GameObject.Find ("FlyBot");
 		FlyBotAi bot = d.GetComponent<FlyBotAi>();
-		bot.setAttackTarget (target);
+//		bot.setAttackTarget (target);
 	}
 
 }
