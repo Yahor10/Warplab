@@ -77,7 +77,6 @@ public class FlyEnemyScriptAi : MonoBehaviour {
 
 	public void OnPathComplete(Path p){
 		if (!p.error) {
-			Debug.Log("On path complete");
 			path = p;
 			currWayPoint = 0;
 		}

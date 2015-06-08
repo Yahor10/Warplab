@@ -10,5 +10,8 @@ public class BulletScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		Physics2D.IgnoreLayerCollision (10, 13);
+
 	}
 }
