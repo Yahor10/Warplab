@@ -12,6 +12,6 @@ public class BulletScript : MonoBehaviour {
 	void Update () {
 
 		Physics2D.IgnoreLayerCollision (10, 13);
-
+		Physics2D.IgnoreLayerCollision (11, 13);
 	}
 }

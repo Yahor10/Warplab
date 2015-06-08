@@ -1,222 +1,175 @@
 using UnityEngine;
 using System.Collections;
-using UnitySampleAssets._2D;
+using Pathfinding;
 
-public class FlyBotAi : FlyBotBehaviour
-{
+[RequireComponent (typeof (Rigidbody2D))]
+[RequireComponent (typeof (Seeker))]
+
+public class FlyBotAi : FlyBotBehaviour {
+	
+	private Seeker seeker;
+	private Rigidbody2D body;
+	
+	public Transform target;
 	
 	
-	public float flyForce = 0f;
-
-	private Transform character;
-
-	private float groundedRadius = .2f; // Radius of the overlap circle to determine if grounded
-
-	float distToGround;
+	public float nextWayPoint = 2;
+	public Path path;
 	
-	[SerializeField] private LayerMask whatIsGround;
+	public float speed = 350f;
+	
+	public ForceMode2D force;
+	// Use this for initialization
 
-	Transform groundCheck;
-
+	
 	public Rigidbody2D bullet;
 
 	private Transform flyBotWeapon;
-
+	
 	private Transform attackTarget;
 
 
- // A mask determining what is ground to the character
-
+	// A mask determining what is ground to the character
+	
 	public float targetHeading = 110f; //0deg - 359deg
 	// Use this for initialization
-
+	
 	private float nextFire = 0.0F;
-
+	
 	public float fireRate = 0.5F;
+	
+	private int currWayPoint = 0;
 
-	void Start ()
-	{
-		character = GameObject.Find ("Character").transform;
+	private bool faceRight = true;
+	void Start () {
 
-		InvokeRepeating("flyState",0.2f,0.2f);
-
-		groundCheck = character.Find("GroundCheck");
-
-		flyBotWeapon = transform.FindChild ("FlyBotWeapon");
+		seeker = GetComponent<Seeker> ();
+		body = GetComponent<Rigidbody2D> ();
 		
-	}
+		seeker.StartPath (transform.position, target.position, OnPathComplete);
 
-	bool clicked = false;
+		
+		
+		flyBotWeapon = transform.FindChild ("FlyBotWeapon");
+
+		StartCoroutine (UpdatePath ());
+	}
 	
 	// Update is called once per frame
-	void Update ()
-	{
+	void Update () {
 
-		if (Input.GetKeyDown (KeyCode.Mouse0)) {
-			if(!clicked){
-				startVector = new Vector2(Input.mousePosition.x, Screen.height - Input.mousePosition.y);
+		Physics2D.IgnoreLayerCollision (10, 11);
 
-			}
-
-			clicked = true;
-			Debug.Log ("GetKeyDown");
+		if(attackTarget == null){
+			return;
 		}
 
-		if (Input.GetMouseButtonUp (0)) {
-			clicked = false;
-		}
-	
-		Vector3 lookDirection = GameObject.Find("FlyEnemy").transform.position - flyBotWeapon.position;
+
+		Vector3 lookDirection = attackTarget.transform.position - flyBotWeapon.position;
 		float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
 		Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-		flyBotWeapon.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 20f);
+		flyBotWeapon.rotation = Quaternion.Slerp(flyBotWeapon.rotation, targetRotation, Time.deltaTime * 20f);
+
+
 
 	}
-
-	void FixedUpdate () 
-	{
+	
+	private bool pathisEnded;
+	
+	public void FixedUpdate(){
+		if (target == null) {
+			return ;
+		}
+		
+		if (path == null) {
+			return;
+		}
+		
+		if (currWayPoint >= path.vectorPath.Count) {
+			
+			
+			if(pathisEnded){
+				return;
+			}
+			
+			pathisEnded = true;
+		}
 
 		switch (currentBehaviour) {
 		case Behavior.follow:
-			flyFollowState();
+			Debug.Log("follow state");
 			break;
 		case Behavior.attack:
+			Debug.Log("attack state");
 			shoot ();
 			break;
 		}
+
+		pathisEnded = false;
+		
+		Vector3 dir = (path.vectorPath [currWayPoint] - transform.position).normalized;
+		dir *= speed * Time.fixedDeltaTime;
+		
+		body.AddForce (dir, force);
+		
+		float dist = Vector3.Distance (transform.position, path.vectorPath [currWayPoint]);
+		if (dist < nextWayPoint) {
+			currWayPoint++;
+			return;
+		}
+
+
+
+	}
+	
+	public void OnPathComplete(Path p){
+		if (!p.error) {
+			path = p;
+			currWayPoint = 0;
+		}
+	}
+	
+	IEnumerator UpdatePath()
+	{
+		if (target == null) {
+			Debug.LogError("target is null");
+			return false;
+		}
+		seeker.StartPath (transform.position, target.position, OnPathComplete);
+		
+		
+		yield return new WaitForSeconds(1f/2f);
+		StartCoroutine (UpdatePath ());
 	}
 
-	
 	void shoot ()
 	{
-		
-		if (Time.time > nextFire) {
-			if(attackTarget == null){
-				Debug.LogError("target null");
-			}
-			
+		if(attackTarget == null){
+			Debug.LogError("target null");
+			return;
+		}
+
+		if (Time.time > nextFire) {	
 			nextFire = Time.time + fireRate;
 			Rigidbody2D bulletInstance = Instantiate (bullet, flyBotWeapon.position, Quaternion.Euler (new Vector3 (0, 0, 0))) as Rigidbody2D;
 			bulletInstance.velocity = (attackTarget.transform.position - flyBotWeapon.position).normalized * 30f;
 			Destroy (bulletInstance.gameObject, 5);
 		}
+
 	}
 
-	void CastRay() {
-		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		RaycastHit2D hit = Physics2D.Raycast (ray.origin, ray.direction, Mathf.Infinity);
-		if (hit) {
-			Debug.Log ("Name" + hit.collider.gameObject.name);
-			Debug.Log ("hit " + hit.collider.gameObject.tag);
+	public void setState(Behavior state){
+		currentBehaviour = state;
+	}
+
+	public void setAttackTarget(Transform targ){
+		Debug.Log("setAttackTarget state");
+
+		if (targ == null) {
+			return;
 		}
-	}    
-
-	bool upped = false; 
-
-	void  flyFollowState() {
-		float xOffset = 1;
 		
-		if (character.localScale.x > 0) {
-			xOffset = -1;
-		}
-		else {
-			xOffset = 1;
-		}
-		float f = Mathf.Lerp (transform.position.x, character.position.x + xOffset, Time.deltaTime * 1f);
-		transform.position = new Vector3 (f, transform.position.y, transform.position.z);
-
-		Physics2D.IgnoreLayerCollision (10, 11);
-	}
-
-
-	void flyState(){
-
-		float dist = Vector2.Distance (transform.position, character.position);
-		if (transform.position.y < character.position.y) {			
-			rigidbody2D.AddForce (new Vector2 (transform.position.x, flyForce));
-		}
-		if (transform.position.y >= character.position.y + 5) {
-			rigidbody2D.AddForce (new Vector2 (transform.position.x, -flyForce));
-		}
-	}
-
-	public void setAttackState(){
-		currentBehaviour = Behavior.attack;
-	}
-
-	void OnCollisionEnter2D(Collision2D coll)
-	{			
-	}
-
-	
-	void OnMouseDown(){
-
-	}
-
-	void OnMouseUp() {
-	}
-
-	void OnMouseDrag(){
-
-	}
-
-	void DrawRectangle (Rect position, Color color)
-	{    
-	
-		// We shouldn't draw until we are told to do so.
-		if (Event.current.type != EventType.Repaint) {
-			// not repaint event
-			return;
-		}
-
-		// Please assign a material that is using position and color.
-		if (material == null) {
-			Debug.LogError ("You have forgot to set a material.");
-			return;
-		}
-
-		material.SetPass (0);
-		
-		// Optimization hint: 
-		// Consider Graphics.DrawMeshNow
-		GL.Color (color);
-		GL.Begin (GL.QUADS);
-		GL.Vertex3 (position.x, position.y, 0);
-		GL.Vertex3 (position.x + position.width, position.y, 0);
-		GL.Vertex3 (position.x + position.width, position.y + position.height, 0);
-		GL.Vertex3 (position.x, position.y + position.height, 0);
-		GL.End ();
-	}
-
-	Vector2 startVector;
-	Vector2 vd;
-	void OnGUI ()
-	{        
-		if(clicked){
-			vd = new Vector2(Input.mousePosition.x -startVector.x, Screen.height - Input.mousePosition.y - startVector.y);
-			Rect rect = new Rect (startVector.x,startVector.y,  vd.x, vd.y);
-
-			Vector3 pos = Camera.main.WorldToScreenPoint(transform.position);
-			pos.y = Screen.height - pos.y;
-			Debug.Log("Rect" + rect.Contains(pos));
-
-			DrawRectangle ( rect, color);        
-		}	
-	}
-
-	// Please assign a material that is using position and color.
-	public Material material;
-
-	public Color color;
-
-
-	public void setAttackTarget(Transform target){
-		if (target == null) {
-			return;
-		}
-
-		attackTarget = target;
-		setAttackState ();
+		attackTarget = targ;
+		setState (Behavior.attack);
 	}
 }
-
