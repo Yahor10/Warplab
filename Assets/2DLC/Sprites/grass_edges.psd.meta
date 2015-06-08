@@ -1,0 +1,150 @@
+fileFormatVersion: 2
+guid: 351a4c13b6654a34eb3f88aa717de19e
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: grass_edges_0
+    21300002: grass_edges_1
+    21300004: grass_edges_2
+    21300006: grass_edges_3
+    21300008: grass_edges_4
+    21300010: grass_edges_5
+    21300012: grass_edges_6
+    21300014: grass_edges_7
+    21300016: grass_edges_8
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 1
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: grass_edges_0
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 341
+        width: 32
+        height: 98
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: grass_edges_1
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 341
+        width: 129
+        height: 98
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: grass_edges_2
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 341
+        width: 128
+        height: 98
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: grass_edges_3
+      rect:
+        serializedVersion: 2
+        x: 322
+        y: 341
+        width: 126
+        height: 98
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: grass_edges_4
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 341
+        width: 31
+        height: 98
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: grass_edges_5
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 206
+        width: 29
+        height: 102
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: grass_edges_6
+      rect:
+        serializedVersion: 2
+        x: 212
+        y: 179
+        width: 146
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: grass_edges_7
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 179
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: grass_edges_8
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 179
+        width: 27
+        height: 31
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

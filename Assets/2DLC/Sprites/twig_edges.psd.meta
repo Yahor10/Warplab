@@ -1,0 +1,128 @@
+fileFormatVersion: 2
+guid: 9935bf2d048291a4c9984b566a697f3a
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: twig_edges_0
+    21300002: twig_edges_1
+    21300004: twig_edges_2
+    21300006: twig_edges_3
+    21300008: twig_edges_4
+    21300010: twig_edges_5
+    21300012: twig_edges_6
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 1
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  seamlessCubemap: 0
+  textureFormat: -3
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: -1
+    aniso: 1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings:
+  - buildTarget: iPhone
+    maxTextureSize: 1024
+    textureFormat: -2
+    compressionQuality: 50
+  spriteSheet:
+    sprites:
+    - name: twig_edges_0
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 378
+        width: 50
+        height: 57
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: twig_edges_1
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 378
+        width: 71
+        height: 57
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: twig_edges_2
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 378
+        width: 117
+        height: 57
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: twig_edges_3
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 378
+        width: 95
+        height: 57
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: twig_edges_4
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 378
+        width: 42
+        height: 57
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: twig_edges_5
+      rect:
+        serializedVersion: 2
+        x: 149
+        y: 97
+        width: 36
+        height: 118
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: twig_edges_6
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 96
+        width: 116
+        height: 33
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 

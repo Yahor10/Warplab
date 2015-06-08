@@ -1,0 +1,422 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 33: {fileID: 3300000}
+  - 23: {fileID: 2300000}
+  - 64: {fileID: 6400000}
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: LogoTerrain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!23 &2300000
+Renderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: 02186c7c153db0648a733d3ca0a12f81, type: 2}
+  - {fileID: 2100000, guid: 25a828ffb2718ac4484ba0432ff85cad, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &3300000
+MeshFilter:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Mesh: {fileID: 0}
+--- !u!64 &6400000
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 0
+  m_Mesh: {fileID: 0}
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1995437713, guid: 458ccfb8ccc2cd2479fedf11b2811c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 0}
+  autoRendererMaterials: 1
+  sceneTools:
+    foldFlag: 0
+    polygonLine:
+      foldFlag: 0
+      show: 0
+      color: {r: 0, g: 1, b: 0, a: 1}
+    pointNumber:
+      foldFlag: 0
+      enabled: 1
+      size: 10
+      color: {r: 1, g: 1, b: 1, a: 1}
+    motionPoint:
+      foldFlag: 0
+      enabled: 1
+      size: .400000006
+      color: {r: 0, g: 1, b: 0, a: 1}
+    insertionPeak:
+      foldFlag: 0
+      enabled: 1
+      circleSize: .300000012
+      circleColor: {r: 1, g: 0, b: 0, a: 1}
+      lineColor: {r: 0, g: 1, b: 0, a: 1}
+    deletionCircle:
+      foldFlag: 0
+      enabled: 1
+      size: .300000012
+      color: {r: 1, g: 0, b: 0, a: 1}
+    selectionPoint:
+      foldFlag: 0
+      enabled: 1
+      size: .600000024
+      color: {r: 1, g: 1, b: 1, a: 1}
+    motionNetwork:
+      foldFlag: 0
+      enabled: 1
+      lineColor: {r: 0, g: 1, b: 0, a: 1}
+    deletionNetwork:
+      foldFlag: 0
+      enabled: 1
+      circleSize: .5
+      circleColor: {r: 1, g: 0, b: 0, a: 1}
+      lineColor: {r: 1, g: 0, b: 0, a: 1}
+  terrainMode: 1
+  investmentDistance: 100
+  pixelsPerUnit: 32
+  matOverlap:
+    foldFlag: 0
+    useDrawingOrder: 0
+    matOrderList:
+    - Assets/2DLC/Materials_Auto/MossyMaterial/MossyMaterial (0).mat
+    - Assets/2DLC/Materials_Auto/MossyMaterial/MossyMaterial (1).mat
+    terrOrderList: 010000000200000003000000080000000500000009000000060000000400000007000000
+    compOrderList: 060000000400000007000000
+  matOpts:
+    foldFlag: 0
+    edgeMode: 0
+    topLeft:
+      foldFlag: 0
+      enabled: 1
+      alignment: 0
+      fixedSize: {x: 0, y: 0}
+      vertexZ: 0
+    topRight:
+      foldFlag: 0
+      enabled: 1
+      alignment: 0
+      fixedSize: {x: 0, y: 0}
+      vertexZ: 0
+    bottomLeft:
+      foldFlag: 0
+      enabled: 1
+      alignment: 0
+      fixedSize: {x: 0, y: 0}
+      vertexZ: 0
+    bottomRight:
+      foldFlag: 0
+      enabled: 1
+      alignment: 0
+      fixedSize: {x: 0, y: 0}
+      vertexZ: 0
+    top:
+      foldFlag: 0
+      enabled: 1
+      alignment: 0
+      facesMode: 0
+      twistAverage: 1
+      includeCutsCorners: 0
+      facesOrder: 1
+      equateSize: 1
+      fixedSize: {x: 0, y: 0}
+      vertexZ: 0
+      randIndices:
+        foldFlag: 0
+        indices: []
+    bottom:
+      foldFlag: 0
+      enabled: 1
+      alignment: 0
+      facesMode: 0
+      twistAverage: 1
+      includeCutsCorners: 0
+      facesOrder: 1
+      equateSize: 1
+      fixedSize: {x: 0, y: 0}
+      vertexZ: 0
+      randIndices:
+        foldFlag: 0
+        indices: []
+    left:
+      foldFlag: 0
+      enabled: 1
+      alignment: 0
+      facesMode: 0
+      twistAverage: 1
+      includeCutsCorners: 0
+      facesOrder: 1
+      equateSize: 1
+      fixedSize: {x: 0, y: 0}
+      vertexZ: 0
+      randIndices:
+        foldFlag: 0
+        indices: []
+    right:
+      foldFlag: 0
+      enabled: 1
+      alignment: 0
+      facesMode: 0
+      twistAverage: 1
+      includeCutsCorners: 0
+      facesOrder: 1
+      equateSize: 1
+      fixedSize: {x: 0, y: 0}
+      vertexZ: 0
+      randIndices:
+        foldFlag: 0
+        indices: []
+    middle:
+      foldFlag: 0
+      enabled: 1
+      facesOrder: 0
+      vertexZ: 0
+      randIndices:
+        foldFlag: 0
+        vals: 
+  colliderOpts:
+    foldFlag: 0
+    type: 0
+    enabled: 0
+    manualMode: 0
+    useAllVertices: 0
+    investCollision: 0
+    editOnScene: 0
+    meshType: 0
+    depth: 1
+    terrOffset:
+      foldFlag: 0
+      top: 0
+      bottom: 0
+      left: 0
+      right: 0
+    compOffset: {x: 0, y: 0}
+    points: []
+  turningAbility:
+    foldFlag: 0
+    x: 100
+    y: 100
+  splitDegrees:
+    foldFlag: 0
+    top:
+      foldFlag: 0
+      start: 120
+      end: 240
+    bottom:
+      foldFlag: 0
+      start: 340
+      end: 20
+    reverseAngle: 0
+  solveTangents: 0
+  render: 1
+  points:
+  - foldFlag: 0
+    pos: {x: -14.6538849, y: -28.5465851}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: .162445068, y: -20.2950172}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 2.05740356, y: -3.71261883}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: -6.36181641, y: -2.91746426}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: -13.4950562, y: -1.3466835}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: -16.9723358, y: -.536109924}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: -17.7044067, y: 12.2747898}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: -8.40390015, y: 6.01667786}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 4.76243591, y: 5.60165215}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 17.2498474, y: 5.37852478}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 32.4219971, y: 12.5038414}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 31.2184601, y: 2.04256058}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 24.0346222, y: -1.24223137}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 16.8669586, y: -2.66220379}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 7.32870483, y: -3.77270412}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 8.64451599, y: -20.1303024}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 15.4666748, y: -20.5751839}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 21.5700989, y: -20.4128952}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 28.3117828, y: -19.786438}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 34.307251, y: -18.7677765}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 31.123642, y: -14.1625357}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 30.5921631, y: -10.6622992}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 31.2138062, y: -4.48884201}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 34.1555634, y: 1.59233093}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 39.3520966, y: 7.59617233}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 47.7332916, y: 10.9041901}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 56.0166931, y: 11.9609528}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 76.6220093, y: 12.026329}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 76.597168, y: -7.98618221}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 66.4967499, y: 5.19416046}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 50.3696136, y: 5.01034927}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 43.0628052, y: 2.16283607}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 39.9376221, y: -3.40974617}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 39.5323334, y: -9.7955389}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 41.5718231, y: -14.6221571}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 47.1154022, y: -18.3607674}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 53.1992188, y: -19.2076988}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 58.3131409, y: -18.2502975}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 63.0789642, y: -15.5022383}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 67.5323486, y: -10.4954386}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 77.589798, y: -24.1480408}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 66.4306183, y: -25.5347939}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 47.9273987, y: -22.7697601}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 33.6805725, y: -22.5077629}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 28.5530548, y: -23.5153122}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 23.8309937, y: -27.6951637}
+    editable: 1
+  - foldFlag: 0
+    pos: {x: 25.1551208, y: -24.0439758}
+    editable: 1
+  savedRender: 0
+  savedAutoRendererMaterials: 0
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1

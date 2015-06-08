@@ -1,0 +1,267 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &100000
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
+  m_Layer: 0
+  m_Name: TrunkMaterial
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &400000
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1592810710, guid: 458ccfb8ccc2cd2479fedf11b2811c06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  matType: 0
+  topLeft:
+    foldFlag: 0
+    sSprite:
+      foldFlag: 0
+      mpType: 6
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 368
+        width: 88
+        height: 88
+      guid: 1b72fb63f5261d44994cb62ea291e038
+    matIndex: 1
+  topRight:
+    foldFlag: 0
+    sSprite:
+      foldFlag: 0
+      mpType: 7
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 368
+        width: 80
+        height: 88
+      guid: 1b72fb63f5261d44994cb62ea291e038
+    matIndex: 1
+  bottomLeft:
+    foldFlag: 0
+    sSprite:
+      foldFlag: 0
+      mpType: 0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      guid: 
+    matIndex: -1
+  bottomRight:
+    foldFlag: 0
+    sSprite:
+      foldFlag: 0
+      mpType: 0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 0
+        height: 0
+      guid: 
+    matIndex: -1
+  left:
+    foldFlag: 0
+    matParts:
+    - foldFlag: 0
+      sSprite:
+        foldFlag: 0
+        mpType: 2
+        rect:
+          serializedVersion: 2
+          x: 149
+          y: 98
+          width: 36
+          height: 117
+        guid: 1b72fb63f5261d44994cb62ea291e038
+      matIndex: 1
+    - foldFlag: 0
+      sSprite:
+        foldFlag: 0
+        mpType: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        guid: 
+      matIndex: -1
+  right:
+    foldFlag: 0
+    matParts:
+    - foldFlag: 0
+      sSprite:
+        foldFlag: 0
+        mpType: 3
+        rect:
+          serializedVersion: 2
+          x: 149
+          y: 98
+          width: 36
+          height: 117
+        guid: 1b72fb63f5261d44994cb62ea291e038
+      matIndex: 1
+    - foldFlag: 0
+      sSprite:
+        foldFlag: 0
+        mpType: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        guid: 
+      matIndex: -1
+  top:
+    foldFlag: 0
+    matParts:
+    - foldFlag: 0
+      sSprite:
+        foldFlag: 0
+        mpType: 4
+        rect:
+          serializedVersion: 2
+          x: 106
+          y: 368
+          width: 153
+          height: 88
+        guid: 1b72fb63f5261d44994cb62ea291e038
+      matIndex: 1
+    - foldFlag: 0
+      sSprite:
+        foldFlag: 0
+        mpType: 4
+        rect:
+          serializedVersion: 2
+          x: 259
+          y: 368
+          width: 145
+          height: 88
+        guid: 1b72fb63f5261d44994cb62ea291e038
+      matIndex: 1
+    - foldFlag: 0
+      sSprite:
+        foldFlag: 0
+        mpType: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        guid: 
+      matIndex: -1
+  bottom:
+    foldFlag: 0
+    matParts:
+    - foldFlag: 0
+      sSprite:
+        foldFlag: 0
+        mpType: 5
+        rect:
+          serializedVersion: 2
+          x: 225
+          y: 96
+          width: 115
+          height: 33
+        guid: 1b72fb63f5261d44994cb62ea291e038
+      matIndex: 1
+    - foldFlag: 0
+      sSprite:
+        foldFlag: 0
+        mpType: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        guid: 
+      matIndex: -1
+  middle:
+    foldFlag: 0
+    matParts:
+    - foldFlag: 0
+      sSprite:
+        foldFlag: 0
+        mpType: 1
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 1024
+          height: 512
+        guid: e88ec73fe6086ea42bbf128bed3010e2
+      matIndex: 0
+    - foldFlag: 0
+      sSprite:
+        foldFlag: 0
+        mpType: 0
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 0
+          height: 0
+        guid: 
+      matIndex: -1
+  matOrientation:
+    foldFlag: 0
+    topLeft: 0
+    top: 0
+    topRight: 0
+    left: 2
+    right: 3
+    bottomLeft: 1
+    bottom: 1
+    bottomRight: 1
+  autoMode: 1
+  mats:
+  - {fileID: 0}
+  - {fileID: 0}
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 100000}
+  m_IsPrefabParent: 1
+  m_IsExploded: 1
