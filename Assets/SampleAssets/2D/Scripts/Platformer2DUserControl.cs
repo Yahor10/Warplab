@@ -17,9 +17,10 @@ namespace UnitySampleAssets._2D
 
         private void Update()
         {
-            if(!jump)
-            // Read the jump input in Update so button presses aren't missed.
-            jump = CrossPlatformInputManager.GetButtonDown("Jump");
+            if (!jump) {
+				// Read the jump input in Update so button presses aren't missed.
+				jump = CrossPlatformInputManager.GetButtonDown ("Jump");
+			}
         }
 
         private void FixedUpdate()

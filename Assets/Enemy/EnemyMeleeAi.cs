@@ -1,15 +1,13 @@
 using UnityEngine;
 using System.Collections;
 
-public class EnemyMeleeAi : MonoBehaviour
+public class EnemyMeleeAi : EnemyAi
 {
 	
 	Transform character;
+
 	
-	public enum Behavior
-	{
-		idle, search, confused, moveToPlayer, wander, attack, useAbility,returnHome
-	}
+
 	// Use this for initialization
 	
 	public Behavior currentState = Behavior.idle;
@@ -71,6 +69,17 @@ public class EnemyMeleeAi : MonoBehaviour
 			transform.position = Vector3.Lerp(transform.position, startPosition, 2 * Time.deltaTime);
 			break;
 		}
+	}
+
+	void OnCollisionEnter2D(Collision2D coll)
+	{			
+		if (coll.gameObject.tag == "Bullet") {
+			HealthPoint -= 20;
+		}
+		if (HealthPoint == 0) {
+			Destroy(gameObject);
+		}
+		Debug.Log ("enter" + coll.gameObject.tag);
 	}
 	
 }

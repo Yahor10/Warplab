@@ -97,16 +97,18 @@ public class FlyBotAi : FlyBotBehaviour {
 
 		switch (currentBehaviour) {
 		case Behavior.follow:
-			Debug.Log("follow state");
 			break;
 		case Behavior.attack:
-			Debug.Log("attack state");
 			shoot ();
 			break;
 		}
 
 		pathisEnded = false;
-		
+
+		if (path.vectorPath.Count <= currWayPoint) {
+			return;
+		}
+
 		Vector3 dir = (path.vectorPath [currWayPoint] - transform.position).normalized;
 		dir *= speed * Time.fixedDeltaTime;
 		
@@ -117,8 +119,6 @@ public class FlyBotAi : FlyBotBehaviour {
 			currWayPoint++;
 			return;
 		}
-
-
 
 	}
 	
@@ -132,7 +132,7 @@ public class FlyBotAi : FlyBotBehaviour {
 	IEnumerator UpdatePath()
 	{
 		if (target == null) {
-			Debug.LogError("target is null");
+			Debug.LogError("UpdatePath target is null");
 			return false;
 		}
 		seeker.StartPath (transform.position, target.position, OnPathComplete);
@@ -166,6 +166,8 @@ public class FlyBotAi : FlyBotBehaviour {
 		Debug.Log("setAttackTarget state");
 
 		if (targ == null) {
+			Debug.LogError("attack target is  null");
+			setState (Behavior.follow);
 			return;
 		}
 		
