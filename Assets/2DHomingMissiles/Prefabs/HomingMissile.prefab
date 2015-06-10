@@ -234,10 +234,10 @@ MonoBehaviour:
   mainTarget: {fileID: 0}
   maxSpeed: .319999993
   kProportionalConst: .550000012
-  fuelAmount: 4
+  fuelAmount: 5
   initialTargetChangeTimer: .5
   isTrackingInitialTarget: 0
-  usesFuel: 1
+  usesFuel: 0
   destroyTargetOnCollision: 0
   usingObjectPool: 0
   missileSpriteTransform: {fileID: 0}
