@@ -27,7 +27,7 @@ public class EnemyMeleeAi : EnemyAi
 		launchMissle = transform.GetComponent<MissileLaunchScript>();
 	}
 	
-	float minFindDist = 2;
+	float minFindDist = 5;
 	
 	void moveToPlayer ()
 	{
@@ -53,7 +53,7 @@ public class EnemyMeleeAi : EnemyAi
 		switch (currentState) {
 		case Behavior.idle:
 			dist = Vector2.Distance (character.position, transform.position);
-			if(dist <= 4){
+			if(dist <= 10){
 				currentState = Behavior.moveToPlayer;			// player founded
 			}
 			break;
@@ -91,10 +91,11 @@ public class EnemyMeleeAi : EnemyAi
 		if (coll.gameObject.tag == "Bullet") {
 			HealthPoint -= 20;
 		}
+
 		if (HealthPoint == 0) {
 			Destroy(gameObject);
 		}
-		Debug.Log ("enter" + coll.gameObject.tag);
+
 	}
 
 
