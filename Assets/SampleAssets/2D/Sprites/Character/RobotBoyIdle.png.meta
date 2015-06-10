@@ -332,8 +332,8 @@ TextureImporter:
     - name: RobotBoyIdle24
       rect:
         serializedVersion: 2
-        x: 825
-        y: 948
+        x: 829
+        y: 947
         width: 275
         height: 275
       alignment: 0
