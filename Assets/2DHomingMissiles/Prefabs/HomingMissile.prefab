@@ -31,7 +31,7 @@ GameObject:
   - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: HomingMissile
-  m_TagString: EnemyMissile
+  m_TagString: EnemyMissle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

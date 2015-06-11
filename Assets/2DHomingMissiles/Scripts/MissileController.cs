@@ -102,6 +102,7 @@ namespace TwoDHomingMissiles
             }
         }
 
+
         public virtual void GracefullyDestroyMissile(Vector2 position)
         {
             // Play hit effect, and create a randomly sized small explosionPrefab
@@ -202,6 +203,7 @@ namespace TwoDHomingMissiles
                 float targetAngle = Mathf.Atan2(currentVelocity.y, currentVelocity.x)*Mathf.Rad2Deg;
                 missileSpriteTransform.rotation = Quaternion.Slerp(missileSpriteTransform.rotation,
                     Quaternion.Euler(0, 0, targetAngle), 100.0f*Time.deltaTime);
+
             }
             else
             {

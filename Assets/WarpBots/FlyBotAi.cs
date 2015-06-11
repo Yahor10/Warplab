@@ -41,6 +41,9 @@ public class FlyBotAi : FlyBotBehaviour {
 	private int currWayPoint = 0;
 
 	private bool faceRight = true;
+
+	GameObject s;
+
 	void Start () {
 
 		seeker = GetComponent<Seeker> ();
@@ -53,29 +56,43 @@ public class FlyBotAi : FlyBotBehaviour {
 		flyBotWeapon = transform.FindChild ("FlyBotWeapon");
 
 		StartCoroutine (UpdatePath ());
-	}
+
+
+		s = GameObject.FindGameObjectWithTag("Pool");
+
+		destroyed = false;
 	
+	}
+
+	float radius = 50.0f;
 	// Update is called once per frame
 	void Update () {
 
 		Physics2D.IgnoreLayerCollision (10, 11);
 
+		/*
+		foreach (Transform obj in s.transform) {
+			if(attackTarget == null){
+				attackTarget = obj.gameObject.transform;
+				break;
+			}
+	    }
+	    */
+
 		if(attackTarget == null){
 			return;
 		}
 
-
-		Vector3 lookDirection = attackTarget.transform.position - flyBotWeapon.position;
-		float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
-		Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-		flyBotWeapon.rotation = Quaternion.Slerp(flyBotWeapon.rotation, targetRotation, Time.deltaTime * 20f);
-
-
+		//Vector3 lookDirection = attackTarget.transform.position - flyBotWeapon.position;
+		//float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+		//Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+		//flyBotWeapon.rotation = Quaternion.Slerp(flyBotWeapon.rotation, targetRotation, Time.deltaTime * 20f);
 
 	}
 	
 	private bool pathisEnded;
-	
+	private bool destroyed;
+
 	public void FixedUpdate(){
 		if (target == null) {
 			return ;
@@ -137,7 +154,6 @@ public class FlyBotAi : FlyBotBehaviour {
 		}
 		seeker.StartPath (transform.position, target.position, OnPathComplete);
 		
-		
 		yield return new WaitForSeconds(1f/2f);
 		StartCoroutine (UpdatePath ());
 	}
@@ -146,9 +162,8 @@ public class FlyBotAi : FlyBotBehaviour {
 	{
 		if(attackTarget == null){
 			Debug.LogError("target null");
-			return;
+		
 		}
-
 		if (Time.time > nextFire) {	
 			nextFire = Time.time + fireRate;
 			Rigidbody2D bulletInstance = Instantiate (bullet, flyBotWeapon.position, Quaternion.Euler (new Vector3 (0, 0, 0))) as Rigidbody2D;
@@ -165,11 +180,7 @@ public class FlyBotAi : FlyBotBehaviour {
 	public void setAttackTarget(Transform targ){
 		Debug.Log("setAttackTarget state");
 
-		if (targ == null) {
-			Debug.LogError("attack target is  null");
-			setState (Behavior.follow);
-			return;
-		}
+	
 		
 		attackTarget = targ;
 		setState (Behavior.attack);

@@ -40,8 +40,6 @@ namespace TwoDHomingMissiles
 
         private IEnumerator FireMissileRandomTargeting(GameObject[] targetGameObjects, List<GameObject> launcherNodes, float delay, bool swarmMissilesOutward)
         {
-			Debug.Log ("Size" + launcherNodes.Count);
-
             foreach (var launcherNode in launcherNodes)
             {
                 var launcherNodeScriptRef = (MissileLauncherNode)launcherNode.GetComponent(typeof(MissileLauncherNode));
