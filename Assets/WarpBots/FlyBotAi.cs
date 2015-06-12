@@ -51,8 +51,7 @@ public class FlyBotAi : FlyBotBehaviour {
 		
 		seeker.StartPath (transform.position, target.position, OnPathComplete);
 
-		
-		
+
 		flyBotWeapon = transform.FindChild ("FlyBotWeapon");
 
 		StartCoroutine (UpdatePath ());
@@ -64,30 +63,15 @@ public class FlyBotAi : FlyBotBehaviour {
 	
 	}
 
-	float radius = 50.0f;
+	public float detectEnemyRadius = 10f;
 	// Update is called once per frame
 	void Update () {
 
 		Physics2D.IgnoreLayerCollision (10, 11);
 
-		/*
-		foreach (Transform obj in s.transform) {
-			if(attackTarget == null){
-				attackTarget = obj.gameObject.transform;
-				break;
-			}
-	    }
-	    */
-
 		if(attackTarget == null){
 			return;
 		}
-
-		//Vector3 lookDirection = attackTarget.transform.position - flyBotWeapon.position;
-		//float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
-		//Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-		//flyBotWeapon.rotation = Quaternion.Slerp(flyBotWeapon.rotation, targetRotation, Time.deltaTime * 20f);
-
 	}
 	
 	private bool pathisEnded;
@@ -114,9 +98,27 @@ public class FlyBotAi : FlyBotBehaviour {
 
 		switch (currentBehaviour) {
 		case Behavior.follow:
+			// validate area 
+			Collider2D[] detectObjects = Physics2D.OverlapCircleAll(transform.position,detectEnemyRadius);
+
+			foreach(Collider2D detect in detectObjects){
+				if(detect.gameObject.tag.Equals("Enemy") || detect.gameObject.tag.Equals("EnemyMissle")){				
+					Debug.Log("detect enemy" + detect.transform.position.x);
+					Debug.Log("detect enemy" + detect.transform.position.y);
+					attackTarget = detect.transform;
+					setState(Behavior.attack);
+					break;
+				}
+			}
+
 			break;
 		case Behavior.attack:
 			shoot ();
+
+			Vector3 lookDirection = attackTarget.transform.position - flyBotWeapon.position;
+			float angle = Mathf.Atan2(lookDirection.y, lookDirection.x) * Mathf.Rad2Deg;
+			Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+			flyBotWeapon.rotation = Quaternion.Slerp(flyBotWeapon.rotation, targetRotation, Time.deltaTime * 20f);
 			break;
 		}
 
@@ -160,10 +162,12 @@ public class FlyBotAi : FlyBotBehaviour {
 
 	void shoot ()
 	{
-		if(attackTarget == null){
+		if(attackTarget == null || !attackTarget.gameObject.activeInHierarchy){
 			Debug.LogError("target null");
-		
+			setState(Behavior.follow);
+			return;
 		}
+
 		if (Time.time > nextFire) {	
 			nextFire = Time.time + fireRate;
 			Rigidbody2D bulletInstance = Instantiate (bullet, flyBotWeapon.position, Quaternion.Euler (new Vector3 (0, 0, 0))) as Rigidbody2D;
@@ -178,11 +182,32 @@ public class FlyBotAi : FlyBotBehaviour {
 	}
 
 	public void setAttackTarget(Transform targ){
-		Debug.Log("setAttackTarget state");
-
-	
-		
 		attackTarget = targ;
+		if (attackTarget == null) {
+			setState (Behavior.follow);
+			return;
+		}
+
 		setState (Behavior.attack);
 	}
+
+	Transform GetClosestEnemy (Transform[] enemies)
+	{
+		Transform bestTarget = null;
+		float closestDistanceSqr = Mathf.Infinity;
+		Vector3 currentPosition = transform.position;
+		foreach(Transform potentialTarget in enemies)
+		{
+			Vector3 directionToTarget = potentialTarget.position - currentPosition;
+			float dSqrToTarget = directionToTarget.sqrMagnitude;
+			if(dSqrToTarget < closestDistanceSqr)
+			{
+				closestDistanceSqr = dSqrToTarget;
+				bestTarget = potentialTarget;
+			}
+		}
+		
+		return bestTarget;
+	}
+
 }

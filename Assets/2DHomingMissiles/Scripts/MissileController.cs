@@ -95,7 +95,6 @@ namespace TwoDHomingMissiles
                         }
                         
                     }
-
                     // Destroy this missile.
                     GracefullyDestroyMissile(gameObject.transform.position);
                 }

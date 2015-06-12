@@ -47,8 +47,16 @@ public class BotAi : MeleeBotAi
 	}
 	
 	void LateUpdate(){
-		
-		followPlayer ();
+
+		switch (currentBehaviour) {
+		case Behavior.follow:
+			followPlayer ();
+			break;
+		case Behavior.defend:
+
+			break;
+		}
+
 
 		Physics2D.IgnoreLayerCollision (10, 11);
 	}

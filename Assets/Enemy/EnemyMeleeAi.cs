@@ -10,6 +10,7 @@ public class EnemyMeleeAi : EnemyAi
 	Vector3 startPosition;
 	
 
+	public int HP = 60;
 	private float nextFire = 0.0F;
 	
 	public float fireRate = 0.7F;
@@ -85,17 +86,17 @@ public class EnemyMeleeAi : EnemyAi
 			break;
 		}
 	}
-
-	void OnCollisionEnter2D(Collision2D coll)
-	{			
-		if (coll.gameObject.tag == "Bullet") {
+	
+	private void OnTriggerEnter2D(Collider2D other)
+	{
+			Debug.Log ("OnTriggerEnter2D " + other.tag);
+		if (other.gameObject.tag == "Bullet") {
 			HealthPoint -= 20;
 		}
-
+		
 		if (HealthPoint == 0) {
 			Destroy(gameObject);
 		}
-
 	}
 
 
