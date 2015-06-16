@@ -20,5 +20,9 @@ public class FlyBotBehaviour : MonoBehaviour
 	}
 
 	public Behavior currentBehaviour;
+
+	public void setState(Behavior state){
+		currentBehaviour = state;
+	}
 }
 

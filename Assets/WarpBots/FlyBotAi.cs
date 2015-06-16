@@ -103,8 +103,6 @@ public class FlyBotAi : FlyBotBehaviour {
 
 			foreach(Collider2D detect in detectObjects){
 				if(detect.gameObject.tag.Equals("Enemy") || detect.gameObject.tag.Equals("EnemyMissle")){				
-					Debug.Log("detect enemy" + detect.transform.position.x);
-					Debug.Log("detect enemy" + detect.transform.position.y);
 					attackTarget = detect.transform;
 					setState(Behavior.attack);
 					break;
@@ -177,9 +175,7 @@ public class FlyBotAi : FlyBotBehaviour {
 
 	}
 
-	public void setState(Behavior state){
-		currentBehaviour = state;
-	}
+
 
 	public void setAttackTarget(Transform targ){
 		attackTarget = targ;

@@ -22,5 +22,9 @@ public class MeleeBotAi : MonoBehaviour
 	{
 	
 	}
+
+	public void setState(Behavior state){
+		currentBehaviour = state;
+	}
 }
 
