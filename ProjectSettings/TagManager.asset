@@ -15,6 +15,8 @@ TagManager:
   - Pool
   - EnemyMissile
   - Warpbot
+  - Background
+  - Asteroid
   - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
@@ -30,7 +32,7 @@ TagManager:
   User Layer 11: Warpbot
   User Layer 12: Obstacle
   User Layer 13: Bullet
-  User Layer 14: 
+  User Layer 14: Background
   User Layer 15: 
   User Layer 16: 
   User Layer 17: 
@@ -53,10 +55,6 @@ TagManager:
     userID: 0
     uniqueID: 0
     locked: 0
-  - name: Background
-    userID: 1
-    uniqueID: 1093696345
-    locked: 0
   - name: Foreground
     userID: 2
     uniqueID: 1859086223
@@ -68,4 +66,8 @@ TagManager:
   - name: UI
     userID: 4
     uniqueID: 771169021
+    locked: 0
+  - name: Background
+    userID: 1
+    uniqueID: 1093696345
     locked: 0

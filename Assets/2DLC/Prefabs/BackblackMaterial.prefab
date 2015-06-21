@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 445006}
   - 114: {fileID: 11445006}
   m_Layer: 0
-  m_Name: T2D Material (0)
+  m_Name: BackblackMaterial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44,57 +44,69 @@ MonoBehaviour:
     foldFlag: 0
     sSprite:
       foldFlag: 0
-      mpType: 0
+      mpType: 6
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 0
-        height: 0
-      guid: 
-    matIndex: 0
+        x: 30
+        y: 333
+        width: 35
+        height: 114
+      guid: eac79c59014004689977547ed66c6777
+    matIndex: 1
   topRight:
     foldFlag: 0
     sSprite:
       foldFlag: 0
-      mpType: 0
+      mpType: 7
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 0
-        height: 0
-      guid: 
-    matIndex: -1
+        x: 441
+        y: 333
+        width: 40
+        height: 114
+      guid: eac79c59014004689977547ed66c6777
+    matIndex: 1
   bottomLeft:
     foldFlag: 0
     sSprite:
       foldFlag: 0
-      mpType: 0
+      mpType: 8
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 0
-        height: 0
-      guid: 
-    matIndex: -1
+        x: 179
+        y: 171
+        width: 17
+        height: 42
+      guid: eac79c59014004689977547ed66c6777
+    matIndex: 1
   bottomRight:
     foldFlag: 0
     sSprite:
       foldFlag: 0
-      mpType: 0
+      mpType: 9
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 0
-        height: 0
-      guid: 
-    matIndex: -1
+        x: 368
+        y: 171
+        width: 18
+        height: 42
+      guid: eac79c59014004689977547ed66c6777
+    matIndex: 1
   left:
     foldFlag: 0
     matParts:
+    - foldFlag: 0
+      sSprite:
+        foldFlag: 0
+        mpType: 2
+        rect:
+          serializedVersion: 2
+          x: 108
+          y: 203
+          width: 34
+          height: 109
+        guid: eac79c59014004689977547ed66c6777
+      matIndex: 1
     - foldFlag: 0
       sSprite:
         foldFlag: 0
@@ -113,6 +125,18 @@ MonoBehaviour:
     - foldFlag: 0
       sSprite:
         foldFlag: 0
+        mpType: 3
+        rect:
+          serializedVersion: 2
+          x: 108
+          y: 203
+          width: 34
+          height: 109
+        guid: eac79c59014004689977547ed66c6777
+      matIndex: 1
+    - foldFlag: 0
+      sSprite:
+        foldFlag: 0
         mpType: 0
         rect:
           serializedVersion: 2
@@ -125,6 +149,18 @@ MonoBehaviour:
   top:
     foldFlag: 0
     matParts:
+    - foldFlag: 0
+      sSprite:
+        foldFlag: 0
+        mpType: 4
+        rect:
+          serializedVersion: 2
+          x: 65
+          y: 333
+          width: 376
+          height: 114
+        guid: eac79c59014004689977547ed66c6777
+      matIndex: 1
     - foldFlag: 0
       sSprite:
         foldFlag: 0
@@ -143,6 +179,18 @@ MonoBehaviour:
     - foldFlag: 0
       sSprite:
         foldFlag: 0
+        mpType: 5
+        rect:
+          serializedVersion: 2
+          x: 196
+          y: 171
+          width: 172
+          height: 42
+        guid: eac79c59014004689977547ed66c6777
+      matIndex: 1
+    - foldFlag: 0
+      sSprite:
+        foldFlag: 0
         mpType: 0
         rect:
           serializedVersion: 2
@@ -155,6 +203,18 @@ MonoBehaviour:
   middle:
     foldFlag: 0
     matParts:
+    - foldFlag: 0
+      sSprite:
+        foldFlag: 0
+        mpType: 1
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 1024
+          height: 512
+        guid: 931873ee866f4416592dfe1f39cde5c4
+      matIndex: 0
     - foldFlag: 0
       sSprite:
         foldFlag: 0

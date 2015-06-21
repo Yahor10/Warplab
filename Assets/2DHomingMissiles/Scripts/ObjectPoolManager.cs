@@ -26,7 +26,7 @@ namespace TwoDHomingMissiles
             // Missile object pool
             missileObjectPool = new List<GameObject>();
 
-            for (var i = 1; i <= numMissilesToSpawn; i++)
+            for (var i = 0.1; i <= numMissilesToSpawn; i++)
             {
                 var missile = (GameObject) Instantiate(missilePrefab);
 

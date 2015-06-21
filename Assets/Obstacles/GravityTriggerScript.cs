@@ -19,7 +19,7 @@ public class GravityTriggerScript : MonoBehaviour
 	}
 
 	void OnTriggerEnter2D(Collider2D other) {
-		character.rigidbody2D.AddForce (new Vector2 (0, 20), ForceMode2D.Impulse);
+		character.rigidbody2D.AddForce (new Vector2 (0, 15), ForceMode2D.Impulse);
 	}
 }
 

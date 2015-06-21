@@ -1,71 +1,71 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &145006
+--- !u!1 &100000
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 445006}
-  - 114: {fileID: 11445006}
+  - 4: {fileID: 400000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: T2D Material (0)
+  m_Name: element
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &445006
+--- !u!4 &400000
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 145006}
+  m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11445006
+--- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 145006}
+  m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: -1592810710, guid: 458ccfb8ccc2cd2479fedf11b2811c06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  matType: 0
+  matType: 1
   topLeft:
     foldFlag: 0
     sSprite:
       foldFlag: 0
-      mpType: 0
+      mpType: 6
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 0
-        height: 0
-      guid: 
+        width: 1024
+        height: 512
+      guid: cc3c49d52a53e4294b66e45010a9220f
     matIndex: 0
   topRight:
     foldFlag: 0
     sSprite:
       foldFlag: 0
-      mpType: 0
+      mpType: 7
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 0
-        height: 0
-      guid: 
-    matIndex: -1
+        width: 1024
+        height: 512
+      guid: cc3c49d52a53e4294b66e45010a9220f
+    matIndex: 5
   bottomLeft:
     foldFlag: 0
     sSprite:
@@ -128,6 +128,54 @@ MonoBehaviour:
     - foldFlag: 0
       sSprite:
         foldFlag: 0
+        mpType: 4
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 1024
+          height: 512
+        guid: cc3c49d52a53e4294b66e45010a9220f
+      matIndex: 1
+    - foldFlag: 0
+      sSprite:
+        foldFlag: 0
+        mpType: 4
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 110
+          height: 50
+        guid: ede0eb147b65eca428439833df711191
+      matIndex: 2
+    - foldFlag: 0
+      sSprite:
+        foldFlag: 0
+        mpType: 4
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 110
+          height: 50
+        guid: 8933f5b4eb743be49b9fe5bc42ca8a0b
+      matIndex: 3
+    - foldFlag: 0
+      sSprite:
+        foldFlag: 0
+        mpType: 4
+        rect:
+          serializedVersion: 2
+          x: 0
+          y: 0
+          width: 110
+          height: 50
+        guid: 2c7a201f38651784e960483aef97fe6e
+      matIndex: 4
+    - foldFlag: 0
+      sSprite:
+        foldFlag: 0
         mpType: 0
         rect:
           serializedVersion: 2
@@ -169,9 +217,9 @@ MonoBehaviour:
       matIndex: -1
   matOrientation:
     foldFlag: 0
-    topLeft: 0
-    top: 0
-    topRight: 0
+    topLeft: 2
+    top: 2
+    topRight: 2
     left: 2
     right: 3
     bottomLeft: 1
@@ -188,6 +236,6 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 145006}
+  m_RootGameObject: {fileID: 100000}
   m_IsPrefabParent: 1
   m_IsExploded: 1
