@@ -46,7 +46,7 @@ public class Mouse : MonoBehaviour {
 			foreach (GameObject enemy in enemies) {
 				Vector3 pos = Camera.main.WorldToScreenPoint (enemy.transform.position);
 				pos.y = Screen.height - pos.y;	
-				EnemyMeleeAi botAi = enemy.GetComponent<EnemyMeleeAi>();
+				EnemyAi botAi = enemy.GetComponent<EnemyAi>();
 
 				if(rect.Contains(pos)){
 					// enemy selected

@@ -63,8 +63,13 @@ public class EnemyAi : MonoBehaviour
 			GUI.Box (r,"Target");
 		}
 	}
-	
+
+	[HideInInspector] // Hides var below
 	public bool selectedByMouse  = false;
+
+	public void setState(Behavior state){
+		currentState = state;
+	}
 
 }
 
