@@ -8,9 +8,8 @@ public class EnemyMeleeAi : EnemyAi
 	Transform character;
 	
 	Vector3 startPosition;
-	
 
-	public int HP = 60;
+
 	private float nextFire = 0.0F;
 	
 	public float fireRate = 0.7F;

@@ -19,7 +19,7 @@ public class SnakeMovent : MonoBehaviour {
 	}
 
 
-	int step = 0;
+	public int step = 0;
 	void Move() {
 		// Save current position (gap will be here)
 		if (step == 5) {
