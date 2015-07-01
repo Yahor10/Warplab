@@ -3,10 +3,8 @@ using System.Collections;
 using UnitySampleAssets._2D;
 
 
-public class Mouse : MonoBehaviour {
+public class MouseSelectedArea : MonoBehaviour {
 	GameObject[] enemies;
-
-	FlyBotAi bot;
 	
 	// Use this for initialization
 	void Start () {
@@ -15,10 +13,7 @@ public class Mouse : MonoBehaviour {
 		if (enemies == null)
 			enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		
-
-		GameObject d = GameObject.Find ("FlyBot");
-		bot = d.GetComponent<FlyBotAi>();
-
+		
 	}
 	bool clicked = false;
 	
@@ -38,8 +33,7 @@ public class Mouse : MonoBehaviour {
 	}
 	
 	void OnGUI ()
-	{     
-		/*
+	{        
 		if (clicked) {
 			vd = new Vector2 (Input.mousePosition.x - startVector.x, Screen.height - Input.mousePosition.y - startVector.y);
 			Rect rect = new Rect (startVector.x, startVector.y, vd.x, vd.y);
@@ -47,20 +41,17 @@ public class Mouse : MonoBehaviour {
 			foreach (GameObject enemy in enemies) {
 				Vector3 pos = Camera.main.WorldToScreenPoint (enemy.transform.position);
 				pos.y = Screen.height - pos.y;	
-				EnemyAi botAi = enemy.GetComponent<EnemyAi>();
-
+				
 				if(rect.Contains(pos)){
 					// enemy selected
-					botAi.selectedByMouse = true;
 					target = enemy.transform;
 					
-				}else{
-					botAi.selectedByMouse = false;
+					Debug.Log("selected!");
 				}
 				
 			}
 			DrawRectangle (rect, color);        
-		}*/
+		}
 		
 	}
 	
@@ -106,13 +97,10 @@ public class Mouse : MonoBehaviour {
 	
 	
 	public void startAttackSelectedTarget(){
+		
+		GameObject d = GameObject.Find ("FlyBot");
+		FlyBotAi bot = d.GetComponent<FlyBotAi>();
 		bot.setAttackTarget (target);
 	}
-
-	public void startFollowingTarget(){
-		bot.setState (FlyBotBehaviour.Behavior.follow);
-		target = null;
-		bot.setAttackTarget (target);
-	}
-
+	
 }

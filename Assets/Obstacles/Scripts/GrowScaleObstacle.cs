@@ -6,29 +6,35 @@ public class GrowScaleObstacle : MonoBehaviour {
 	// Use this for initialization
 	bool upResize;
 	bool downResize;
+	bool wait;
+
+	public Transform triggerTarget;
+	FlyPlatformScript flyScript;
 
 	void Start () {
 		upResize = true;
 		downResize = false;
-		InvokeRepeating("resizeY", 1, 0.1F);
-		BoxCollider2D box = GetComponent<BoxCollider2D> ();
-		box.collider2D.enabled = false;
-
+		wait = false;
+		InvokeRepeating("resizeLocaleScaleY", 1, 0.1F);
+		flyScript = triggerTarget.GetComponent<FlyPlatformScript> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	}
 
-	public void resizeY(){
+	public void resizeLocaleScaleY(){
 
 
 		if (transform.localScale.y < 1.0 && !upResize) {
 			upResize = true;
+			wait = true;
+			CancelInvoke("resizeLocaleScaleY");
 		}
 	
 		if (transform.localScale.y > 2.0 && upResize) {
 			upResize = false;
+			flyScript.startFly();
 		}
 
 		if (upResize) {
@@ -40,6 +46,5 @@ public class GrowScaleObstacle : MonoBehaviour {
 
 
 
-		Debug.Log("y scale" + transform.localScale.y);
 	}
 }

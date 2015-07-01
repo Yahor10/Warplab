@@ -21,7 +21,6 @@ public class WallElecticity : MonoBehaviour {
 	IEnumerator WaitAndPrint(float waitTime) {
 		while (true) { 
 			yield return new WaitForSeconds (waitTime);
-			print ("WaitAndPrint " + Time.time);
 			render.color = colors[Random.Range(0,3)];
 		}
 	}

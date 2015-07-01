@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class MeleeBotAi : MonoBehaviour
+public class MeleeBotAi : BaseBotAi
 {
 
 	public enum Behavior
@@ -26,5 +26,6 @@ public class MeleeBotAi : MonoBehaviour
 	public void setState(Behavior state){
 		currentBehaviour = state;
 	}
+	
 }
 

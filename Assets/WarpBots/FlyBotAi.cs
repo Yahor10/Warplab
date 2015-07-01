@@ -99,6 +99,7 @@ public class FlyBotAi : FlyBotBehaviour {
 		switch (currentBehaviour) {
 		case Behavior.follow:
 			// validate area 
+			/*
 			Collider2D[] detectObjects = Physics2D.OverlapCircleAll(transform.position,detectEnemyRadius);
 
 			foreach(Collider2D detect in detectObjects){
@@ -108,6 +109,7 @@ public class FlyBotAi : FlyBotBehaviour {
 					break;
 				}
 			}
+			*/
 
 			break;
 		case Behavior.attack:

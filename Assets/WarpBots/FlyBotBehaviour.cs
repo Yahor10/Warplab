@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-public class FlyBotBehaviour : MonoBehaviour
+public class FlyBotBehaviour : BaseBotAi
 {
 	public enum Behavior
 	{
