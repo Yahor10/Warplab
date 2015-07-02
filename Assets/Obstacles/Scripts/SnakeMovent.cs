@@ -22,7 +22,7 @@ public class SnakeMovent : MonoBehaviour {
 	public int step = 0;
 	void Move() {
 		// Save current position (gap will be here)
-		if (step == 5) {
+		if (step == 5 && tail.Count >0) {
 			// Add to front of list, remove from the back
 			Transform el  = tail.ElementAt(tail.Count - 1 );
 			Destroy(el.gameObject);

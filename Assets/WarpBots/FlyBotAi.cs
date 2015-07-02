@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using Pathfinding;
+using System.Collections.Generic;
 
 [RequireComponent (typeof (Rigidbody2D))]
 [RequireComponent (typeof (Seeker))]
@@ -28,6 +29,10 @@ public class FlyBotAi : FlyBotBehaviour {
 	
 	private Transform attackTarget;
 
+	private Vector3 followPoint;
+
+	private List<Vector3> followPoints;
+	
 
 	// A mask determining what is ground to the character
 	
@@ -154,7 +159,12 @@ public class FlyBotAi : FlyBotBehaviour {
 			Debug.LogError("UpdatePath target is null");
 			return false;
 		}
-		seeker.StartPath (transform.position, target.position, OnPathComplete);
+		if (currentBehaviour == Behavior.followPath) {
+			seeker.StartPath (transform.position, followPoint, OnPathComplete);
+
+		} else {
+			seeker.StartPath (transform.position, target.position, OnPathComplete);
+		}
 		
 		yield return new WaitForSeconds(1f/2f);
 		StartCoroutine (UpdatePath ());
@@ -187,6 +197,16 @@ public class FlyBotAi : FlyBotBehaviour {
 		}
 
 		setState (Behavior.attack);
+	}
+
+	public void startFollowPoint(Vector3 point){
+		followPoint = point;
+		currentBehaviour = Behavior.followPath;
+	}
+
+	public void startFollowPoints(List<Vector3> points){
+		currentBehaviour = Behavior.followPath;
+		followPoints = points;
 	}
 
 	Transform GetClosestEnemy (Transform[] enemies)

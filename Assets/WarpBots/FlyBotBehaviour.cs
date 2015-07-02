@@ -5,7 +5,7 @@ public class FlyBotBehaviour : BaseBotAi
 {
 	public enum Behavior
 	{
-		idle, search,defend, follow, wander, attack, useAbility,death
+		idle, search,defend, follow,followPath, wander, attack, useAbility,death
 	}
 	// Use this for initialization
 	void Start ()

@@ -12,6 +12,9 @@ public class DrawLine : MonoBehaviour
 	public Material material;
 
 	// Structure for line points
+	
+	private FlyBotAi flyBot;
+
 	struct myLine
 	{
 		public Vector3 StartPoint;
@@ -30,6 +33,11 @@ public class DrawLine : MonoBehaviour
 		isMousePressed = false;
 		pointsList = new List<Vector3>();
 	}
+
+	void Start(){
+		GameObject bot = GameObject.Find ("FlyBot");
+		flyBot = bot.GetComponent<FlyBotAi> ();
+	}
 	//	-----------------------------------	
 	void Update () 
 	{
@@ -44,6 +52,9 @@ public class DrawLine : MonoBehaviour
 		else if(Input.GetMouseButtonUp(0))
 		{
 			isMousePressed = false;
+			Vector3 followPoint = pointsList[pointsList.Count - 1];
+			flyBot.startFollowPoint(followPoint);
+
 		}
 		// Drawing line when mouse is moving(presses)
 		if(isMousePressed)
@@ -61,7 +72,6 @@ public class DrawLine : MonoBehaviour
 					line.SetColors(Color.red, Color.red);
 				}
 			}
-			Debug.Log("points" + pointsList[0].x);
 		}
 	}
 	//	-----------------------------------	
