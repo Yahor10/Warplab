@@ -39,7 +39,7 @@ public class Mouse : MonoBehaviour {
 	
 	void OnGUI ()
 	{     
-		/*
+
 		if (clicked) {
 			vd = new Vector2 (Input.mousePosition.x - startVector.x, Screen.height - Input.mousePosition.y - startVector.y);
 			Rect rect = new Rect (startVector.x, startVector.y, vd.x, vd.y);
@@ -60,7 +60,7 @@ public class Mouse : MonoBehaviour {
 				
 			}
 			DrawRectangle (rect, color);        
-		}*/
+		}
 		
 	}
 	

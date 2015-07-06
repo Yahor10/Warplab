@@ -66,8 +66,14 @@ public class BotAi : MeleeBotAi
 			break;
 		case Behavior.defend:
 			// stop follow
+			//Debug.Log("seconds left" + left);
+			defentTimeState += Time.deltaTime;
 			energyShield.renderer.enabled = true;
-			StartCoroutine (checkDefendState(5.0f));
+			if(defentTimeState > 5.0f){
+				defentTimeState = 0.0f;
+				checkDefendState();
+			}
+			//StartCoroutine (checkDefendState(5.0f));
 			break;
 		}
 
@@ -80,18 +86,18 @@ public class BotAi : MeleeBotAi
 
 	}
 
-	IEnumerator checkDefendState(float waitTime) {
-		while(true){
-			yield return new WaitForSeconds (waitTime);
-			Collider2D[] detectObjects = Physics2D.OverlapCircleAll(transform.position,detectEnemyRadius);
-			foreach(Collider2D detect in detectObjects){
+	void checkDefendState() {
+		Debug.Log ("check def state");
+		Collider2D[] detectObjects = Physics2D.OverlapCircleAll(transform.position,detectEnemyRadius);
+		foreach(Collider2D detect in detectObjects){
 				if(detect.gameObject.tag.Equals("EnemyMissle")){
-					setState(Behavior.defend);	
-					return true;
+				return;
 				}
-			} // TODo refactor speed
+			} 
+			Debug.Log("change follow state!");	
 			setState(Behavior.follow);
+	
 		}
-	}
+	float defentTimeState = 0.0f;
 }
 

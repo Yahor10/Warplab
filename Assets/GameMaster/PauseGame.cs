@@ -24,6 +24,18 @@ public class PauseGame : MonoBehaviour
 		} else {
 			Time.timeScale = 1;
 		}
+
+		if ( Input.GetMouseButton( 1 ) )
+		{
+			MouseX = Input.GetAxis("Mouse X");
+			MouseY = Input.GetAxis("Mouse Y");
+			Vector3	CameraPos = new Vector3(- MouseX, -MouseY, 0);
+
+			Camera.mainCamera.transform.position +=CameraPos;
+		}
 	}
+
+	float MouseX;
+	float MouseY;
 }
 
