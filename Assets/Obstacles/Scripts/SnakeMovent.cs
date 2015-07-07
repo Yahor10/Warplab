@@ -4,56 +4,65 @@ using System.Collections.Generic;
 
 public class SnakeMovent : MonoBehaviour {
 
-	// Use this for initialization
-	Vector2 dir = Vector2.right/2;
-	List<Transform> tail = new List<Transform>();
 	public Transform tailPrefab;
 
+	public Vector2 direction = new Vector2(1, 0);
+
+	public float stepWidth = 0.6f;
+
+	public int limit = 10;
+
+	public int length = 3;
+
+	public float stepSpeed = 1.0f;
+
+	public bool reverse = false;
+
+	private List<Transform> tail = new List<Transform>();
+
+	private Vector2 initialPosition;
+
+	private int step = 0;
+
 	void Start () {
-		InvokeRepeating("Move", 1.0f, 1.0f);  
-
-	}
-	
-	// Update is called once per frame
-	void Update () {
+		initialPosition = transform.position;
+		InvokeRepeating("Move", stepSpeed, stepSpeed);
 	}
 
-
-	public int step = 0;
 	void Move() {
-		// Save current position (gap will be here)
-		if (step == 5 && tail.Count >0) {
-			// Add to front of list, remove from the back
-			Transform el  = tail.ElementAt(tail.Count - 1 );
-			Destroy(el.gameObject);
-			tail.RemoveAt(tail.Count - 1);
-			return;
-		}
-
-		Vector2 v = transform.position;
-		
-		// Move head into new direction (now there is a gap)
-		transform.Translate(dir);
-
-
-		if (tail.Count() <= 5) {
-
-			Transform g = Instantiate (tailPrefab,
-		                                      v,
-		                                      Quaternion.identity) as Transform;
-			// Keep track of it in our tail list
-			tail.Insert (0, g);
-
-		}else if(tail.Count > 5){
+		if (tail.Count < length && step <= limit) {
 			step++;
-			// Move last Tail Element to where the Head was
-			tail.Last().position = v;
-			
-			// Add to front of list, remove from the back
-			tail.Insert(0, tail.Last());
-			tail.RemoveAt(tail.Count-1);
-
+			Transform tailPart = Instantiate(tailPrefab, new Vector2(initialPosition.x + (step * (direction.x * stepWidth)), initialPosition.y + (step * (direction.y * stepWidth))), Quaternion.identity) as Transform;
+			tail.Add(tailPart);
+		} else if (tail.Count == length && step <= limit) {
+			step++;
+			for (int i = 0; i < length; i++) {
+				tail[i].Translate(new Vector2(direction.x * stepWidth, direction.y * stepWidth));
+			}
+		} else if (step > limit) {
+			if (tail.Count == 0) {
+				step = 0;
+			} else if (reverse) {
+				direction = new Vector2(-direction.x, -direction.y);
+				step = 0;
+			} else {
+				Destroy(tail[0].gameObject);
+				tail.RemoveAt(0);
+			}
 		}
 
 	}
 }
+/*
+if (step >= limit && step <= limit + length) {
+				tail.RemoveAt(0);
+				if (reverse) {
+					
+				}
+			} else {
+				tail.Last().position = v;
+			
+				tail.Insert(0, tail.Last());
+				tail.RemoveAt(tail.Count - 1);
+			}
+*/
