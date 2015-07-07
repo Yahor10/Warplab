@@ -9,14 +9,12 @@ public class CharacterStatus : MonoBehaviour {
 	SpawnPlayer spawnScript;
 	// Use this for initialization
 	void Start () {		 
-		Debug.Log ("init char status");
 		GameObject gameObject = GameObject.FindGameObjectWithTag ("GameMaster");
 		spawnScript = gameObject.GetComponent<SpawnPlayer> ();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
 	}
 
 	Transform pl;

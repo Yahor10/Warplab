@@ -7,7 +7,6 @@ public class FlyPlatformScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		GameObject tr = GameObject.FindGameObjectWithTag ("Player") ;
-		//Physics2D.IgnoreCollision(tr.GetComponent<CircleCollider2D>(), GetComponent<BoxCollider2D>());
 	}
 	
 	// Update is called once per frame
@@ -15,7 +14,6 @@ public class FlyPlatformScript : MonoBehaviour {
 	}
 
 	public void fly(){
-		Debug.Log ("y pos" + transform.position.y);
 		transform.position = new Vector3 (transform.position.x , transform.position.y + 0.1f, 0);
 
 		if (transform.position.y >= 8) {
