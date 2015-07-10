@@ -1,6 +1,6 @@
 ﻿Shader "Custom/FogOfWarShader" {
 	Properties {
-		_MainTex ("Base (RGB)", 2D) = "white" {}
+		_MainTex ("Base (RGB)", 2D) = "green" {}
 	}
 	SubShader {
 		Tags { "RenderType" = "Transparent" "Queue" = "Transparent" }

@@ -23,7 +23,7 @@ public class FogOfWarManager : MonoBehaviour
 	
 	private Texture2D _texture;
 	private Color[] _pixels;
-	private List<R2> _revealers;
+	private List<Revelear> _revealers;
 	private int _pixelsPerUnit;
 	private Vector2 _centerPixel;
 	
@@ -46,7 +46,6 @@ public class FogOfWarManager : MonoBehaviour
 	
 	private void Awake()
 	{
-		Debug.Log ("Awake fog manager");
 
 		_instance = this;
 		
@@ -68,23 +67,29 @@ public class FogOfWarManager : MonoBehaviour
 			return;
 		}
 		
-		_texture = new Texture2D(_textureSize, _textureSize, TextureFormat.RGBA32, false);
+		_texture = new Texture2D(_textureSize, _textureSize, TextureFormat.ARGB32, false);
 		_texture.wrapMode = TextureWrapMode.Clamp;
-		
+
+		_fogOfWarColor = renderer.material.color;
+
 		_pixels = _texture.GetPixels();
 		ClearPixels();
 		
 		fogOfWarMat.mainTexture = _texture;
 		
-		_revealers = new List<R2>();
+		_revealers = new List<Revelear>();
 		
 		_pixelsPerUnit = Mathf.RoundToInt(_textureSize / transform.lossyScale.x);
 		
 		_centerPixel = new Vector2(_textureSize * 0.5f, _textureSize * 0.5f);
+
+		Debug.Log ("Awake fog manager" + _pixelsPerUnit);
+
 	}
 	
-	public void RegisterRevealer(R2 revealer)
+	public void RegisterRevealer(Revelear revealer)
 	{
+
 		_revealers.Add(revealer);
 	}
 	
@@ -104,39 +109,46 @@ public class FogOfWarManager : MonoBehaviour
 	/// <param name="radius">in unity units</param>
 	private void CreateCircle(int originX, int originY, int radius)
 	{
+
 		for (var y = -radius * _pixelsPerUnit; y <= radius * _pixelsPerUnit; ++y)
 		{
 			for (var x = -radius * _pixelsPerUnit; x <= radius * _pixelsPerUnit; ++x)
 			{
-				if (x * x + y * y <= (radius * _pixelsPerUnit) * (radius * _pixelsPerUnit))
-				{
-					_pixels[(originY + y) * _textureSize + originX + x] = new Color(0, 0, 0, 0);
+				if(x * x + y * y < (radius *radius *_pixelsPerUnit )){
+					_pixels[ (originY + y) * _textureSize + originX + x] = Color.clear;
 				}
 			}
 		}
+
 	}
-	
+
 	private void Update()
 	{
 		ClearPixels();
+
+	
 		foreach (var revealer in _revealers)
 		{
-			// should do a raycast from the revealer to the camera.
 			var screenPoint = Camera.main.WorldToScreenPoint(revealer.transform.position);
 			var ray = Camera.main.ScreenPointToRay(screenPoint);
+
 			RaycastHit hit;
-			if (Physics.Raycast(ray, out hit, 1000, _fogOfWarLayer.value))
-			{
-				// Translates the revealer to the center of the fog of war.
-				// This way the position lines up with the center pixel and can be converted easier.
-				var translatedPos = hit.point - transform.position;
-				
+			bool cast = Physics.Raycast(ray, out hit, 1000, _fogOfWarLayer.value);
+			if(cast){
+			var translatedPos = hit.point - transform.position;
+
 				var pixelPosX = Mathf.RoundToInt(translatedPos.x * _pixelsPerUnit + _centerPixel.x);
-				var pixelPosY = Mathf.RoundToInt(translatedPos.z * _pixelsPerUnit + _centerPixel.y);
+				var pixelPosY = Mathf.RoundToInt(translatedPos.y * _pixelsPerUnit + _centerPixel.y);
+
+				Debug.Log("pixelPosX" + pixelPosX);
+				Debug.Log("pixelPosY" + pixelPosY);
+
 				
 				CreateCircle(pixelPosX, pixelPosY, revealer.radius);
 			}
+
 		}
+	
 		
 		_texture.SetPixels(_pixels);
 		_texture.Apply(false);

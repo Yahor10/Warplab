@@ -1,13 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class R2 : MonoBehaviour {
+public class Revelear : MonoBehaviour {
 
-	// Use this for initialization
-	public int radius = 20;
+	public int radius;
 	
 	private void Start()
 	{
 		FogOfWarManager.Instance.RegisterRevealer(this);
+	}
+
+	
+	private void Update()
+	{
+
+	
 	}
 }
