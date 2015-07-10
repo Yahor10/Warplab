@@ -114,8 +114,8 @@ public class FogOfWarManager : MonoBehaviour
 		{
 			for (var x = -radius * _pixelsPerUnit; x <= radius * _pixelsPerUnit; ++x)
 			{
-				if(x * x + y * y < (radius *radius *_pixelsPerUnit )){
-					_pixels[ (originY + y) * _textureSize + originX + x] = Color.clear;
+				if(x * x + y * y  < (radius *radius *_pixelsPerUnit)){
+					_pixels[ (originY + y) * _textureSize + originX + x ] = Color.clear;
 				}
 			}
 		}
