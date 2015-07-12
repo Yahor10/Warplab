@@ -40,6 +40,16 @@
     var LaserDist = 20.0;
 	var TexScrollX = -0.1;
 	var TexScrollY = 0.1;
+
+	var rotate = false;
+
+	var rotationSpeedX = -5.0;
+	var rotationSpeedY = 0.0;
+	var rotationSpeedZ = 0.0;
+
+	var blink = false;
+	var minBlinkPeriod = 10;
+	var maxBlinkPeriod = 100;
     
     private var SectionDetail : int = 2;       
     private var lineRenderer : LineRenderer;
@@ -56,14 +66,14 @@
 	private var BurnClone : Transform;
 	private var CamDistSource : float;
     private var CamDistEnd  : float;
-	
+	private var iterationsToToggle : float;
 	
     @script RequireComponent(LineRenderer)
     
     function Start() {
          lineRenderer = GetComponent(LineRenderer);
          if(lineRenderer.material == "none")
-         lineRenderer.renderer.material = new Material (Shader.Find("LaserAdditive"));
+         lineRenderer.GetComponent.<Renderer>().material = new Material (Shader.Find("LaserAdditive"));
          
          lineRenderer.castShadows = false;
          lineRenderer.receiveShadows = false;
@@ -74,15 +84,15 @@
          // Make a lights
         if(AddSourceLight){
 		StartPoint.gameObject.AddComponent(Light);
-		StartPoint.light.intensity = 1.5;
-		StartPoint.light.range = .5;
+		StartPoint.GetComponent.<Light>().intensity = 1.5;
+		StartPoint.GetComponent.<Light>().range = .5;
 		}
 		
 		if(AddEndLight){
 			if(EndFlare){
 				EndFlare.gameObject.AddComponent(Light);
-				EndFlare.light.intensity = 1.5;
-				EndFlare.light.range = 1.0;		
+				EndFlare.GetComponent.<Light>().intensity = 1.5;
+				EndFlare.GetComponent.<Light>().range = 1.0;		
 			}
 			else{Debug.Log("To use End Light, please assign an End Flare");}
 		}		
@@ -127,7 +137,17 @@
     		Debug.Log("Main camera not tagged, please tag main camera");
     	}
 		
-				 
+	  if (rotate) {
+	  	transform.Rotate(rotationSpeedX * Time.deltaTime, rotationSpeedY * Time.deltaTime, rotationSpeedZ * Time.deltaTime);
+	  }
+
+	  if (blink) {
+	  	if(iterationsToToggle <= 0) {
+	  		iterationsToToggle = Random.Range(minBlinkPeriod, maxBlinkPeriod);
+	  		LaserOn = !LaserOn;
+	  	}
+	  	iterationsToToggle--;
+	  }
     	    	  	    	
       if(LaserOn){
       	lineRenderer.enabled = true;               
@@ -160,14 +180,14 @@
         
         //Light Control
         if(AddSourceLight){
-        StartPoint.light.color = LaserColor;
-        StartPoint.light.range = SourceLightRange;		
+        StartPoint.GetComponent.<Light>().color = LaserColor;
+        StartPoint.GetComponent.<Light>().range = SourceLightRange;		
 		}
 
         if(AddEndLight){
-		 EndFlare.light.range = EndLightRange;
+		 EndFlare.GetComponent.<Light>().range = EndLightRange;
          if(EndFlare){
-         EndFlare.light.color = LaserColor;
+         EndFlare.GetComponent.<Light>().color = LaserColor;
          }
         }               
         
@@ -203,7 +223,7 @@
 			    
 			   if(AddEndLight){
 			   if(EndFlare){
-			   EndFlare.light.enabled = true;		    
+			   EndFlare.GetComponent.<Light>().enabled = true;		    
 		     		}
 		    	}
 		      		    
@@ -214,8 +234,8 @@
 		    }		    
 		    ////////////Burn & Sparks
 	     if(UseBurn){
-	       if(HitSparks && hit2D.transform.gameObject.collider2D.tag != IgnoreTag){	       	       	
-	       	HitSparks.particleSystem.enableEmission  = true;
+	       if(HitSparks && hit2D.transform.gameObject.GetComponent.<Collider2D>().tag != IgnoreTag){	       	       	
+	       	HitSparks.GetComponent.<ParticleSystem>().enableEmission  = true;
 	       	HitSparks.transform.position = EndPos + hit2D.normal * EndFlareOffset;
 	       	HitSparks.transform.rotation = Quaternion.FromToRotation(Vector3.forward, hit2D.normal);
 	       	 //////////////Enable Burn Marks
@@ -227,12 +247,12 @@
 	       	 }
 	       	 //////////Use Laser Color for Sparks
 	       	if(SparkUseLaserColor){
-	       		  HitSparks.particleSystem.startColor  = LaserColor;
+	       		  HitSparks.GetComponent.<ParticleSystem>().startColor  = LaserColor;
 	       		}
 	       	  }
 	       	  else{
 	       	  	if(HitSparks){	       	       	
-	       			HitSparks.particleSystem.enableEmission  = false;
+	       			HitSparks.GetComponent.<ParticleSystem>().enableEmission  = false;
 	       		}
 	       	  }	       	  	        
 	        }////End Burn & Sparks 
@@ -243,12 +263,12 @@
 	        
 	        if(AddEndLight){
 		     if(EndFlare){
-		     EndFlare.light.enabled = false;
+		     EndFlare.GetComponent.<Light>().enabled = false;
 		     }
 		    }
 		    
 		   if(HitSparks){	       	       	
-	       			HitSparks.particleSystem.enableEmission  = false;
+	       			HitSparks.GetComponent.<ParticleSystem>().enableEmission  = false;
 	       		}
 	       		
 		   if(UseMousePos){
@@ -277,7 +297,7 @@
 			    
 			    if(AddEndLight){
 			     if(EndFlare){
-			     EndFlare.light.enabled = true;		    
+			     EndFlare.GetComponent.<Light>().enabled = true;		    
 			     }
 			    }
 			      		    
@@ -289,8 +309,8 @@
 			    
 			  ////////////Burn & Sparks
 		     if(UseBurn){
-		       if(HitSparks && hit.transform.gameObject.collider.tag != IgnoreTag){	       	       	
-		       	HitSparks.particleSystem.enableEmission  = true;
+		       if(HitSparks && hit.transform.gameObject.GetComponent.<Collider>().tag != IgnoreTag){	       	       	
+		       	HitSparks.GetComponent.<ParticleSystem>().enableEmission  = true;
 		       	HitSparks.transform.position = EndPos + hit.normal * .04;
 		       	HitSparks.transform.rotation = Quaternion.FromToRotation(Vector3.forward, hit.normal);
 		       	 //////////////Enable Burn Marks
@@ -302,12 +322,12 @@
 		       	 }
 		       	 //////////Use Laser Color for Sparks
 		       	if(SparkUseLaserColor){
-		       		  HitSparks.particleSystem.startColor  = LaserColor;
+		       		  HitSparks.GetComponent.<ParticleSystem>().startColor  = LaserColor;
 		       		}
 		       	  }
 		       	  else{
 		       	  	if(HitSparks){	       	       	
-		       			HitSparks.particleSystem.enableEmission  = false;
+		       			HitSparks.GetComponent.<ParticleSystem>().enableEmission  = false;
 		       		}
 		       	  }
 		       	  	        
@@ -320,14 +340,14 @@
 		        
 		        if(AddEndLight){
 			     if(EndFlare){
-			     EndFlare.light.enabled = false;
+			     EndFlare.GetComponent.<Light>().enabled = false;
 			     }
 			    }
 			    
 	           EndPos = ray.GetPoint(LaserDist);
 	           
 	           if(HitSparks){	       	       	
-		       	HitSparks.particleSystem.enableEmission  = false;
+		       	HitSparks.GetComponent.<ParticleSystem>().enableEmission  = false;
 		       }	        	        	        	        
 	         }
 	         }
@@ -341,7 +361,7 @@
 			    
 			    if(AddEndLight){
 			     if(EndFlare){
-			     EndFlare.light.enabled = true;		    
+			     EndFlare.GetComponent.<Light>().enabled = true;		    
 			     }
 			    }
 			      		    
@@ -353,8 +373,8 @@
 			    
 			  ////////////Burn & Sparks
 		     if(UseBurn){
-		       if(HitSparks && hit.transform.gameObject.collider.tag != IgnoreTag){	       	       	
-		       	HitSparks.particleSystem.enableEmission  = true;
+		       if(HitSparks && hit.transform.gameObject.GetComponent.<Collider>().tag != IgnoreTag){	       	       	
+		       	HitSparks.GetComponent.<ParticleSystem>().enableEmission  = true;
 		       	HitSparks.transform.position = EndPos + hit.normal * .04;
 		       	HitSparks.transform.rotation = Quaternion.FromToRotation(Vector3.forward, hit.normal);
 		       	 //////////////Enable Burn Marks
@@ -366,12 +386,12 @@
 		       	 }
 		       	 //////////Use Laser Color for Sparks
 		       	if(SparkUseLaserColor){
-		       		  HitSparks.particleSystem.startColor  = LaserColor;
+		       		  HitSparks.GetComponent.<ParticleSystem>().startColor  = LaserColor;
 		       		}
 		       	  }
 		       	  else{
 		       	  	if(HitSparks){	       	       	
-		       			HitSparks.particleSystem.enableEmission  = false;
+		       			HitSparks.GetComponent.<ParticleSystem>().enableEmission  = false;
 		       		}
 		       	  }
 		       	  	        
@@ -384,14 +404,14 @@
 		        
 		        if(AddEndLight){
 			     if(EndFlare){
-			     EndFlare.light.enabled = false;
+			     EndFlare.GetComponent.<Light>().enabled = false;
 			     }
 			    }
 			    
 	           EndPos = ray.GetPoint(LaserDist);
 	           
 	           if(HitSparks){	       	       	
-		       	HitSparks.particleSystem.enableEmission  = false;
+		       	HitSparks.GetComponent.<ParticleSystem>().enableEmission  = false;
 		       }	        	        	        	        
 	         }	      
          
@@ -418,7 +438,7 @@
    }
    else{
    	if(HitSparks){
-   		HitSparks.particleSystem.enableEmission  = false;
+   		HitSparks.GetComponent.<ParticleSystem>().enableEmission  = false;
    	}
     lineRenderer.enabled = false;
     
@@ -429,11 +449,11 @@
 	EndFlare.enabled = false;
 	        
 	if(AddSourceLight)
-	StartPoint.light.enabled = false;
+	StartPoint.GetComponent.<Light>().enabled = false;
 	
 	if(AddEndLight)
 	 if(EndFlare){
-	 EndFlare.light.enabled = false;	
+	 EndFlare.GetComponent.<Light>().enabled = false;	
 	 }	 
    }//end Laser On   
    
