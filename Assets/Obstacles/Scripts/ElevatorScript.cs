@@ -23,7 +23,6 @@ public class ElevatorScript : MonoBehaviour {
 	}
 	
 	void Update () {
-		print(platform.transform.position);
 		if (wait) {
 			if (direction < 0) {
 				top.transform.position = new Vector2(top.transform.position.x, top.transform.position.y + (direction / 50));
