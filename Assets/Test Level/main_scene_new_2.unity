@@ -1505,7 +1505,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d6b4bdede1cbf443863db08549cca70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  botStateText: 
   material: {fileID: 2100000, guid: 35902446ef96c0246b7e7bfc48429309, type: 2}
   color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &140183292
@@ -12780,7 +12779,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerObject: {fileID: 562808773}
-  mouseObject: {fileID: 137425850}
+  botObject: {fileID: 1718867266}
 --- !u!1 &913199086
 GameObject:
   m_ObjectHideFlags: 0
@@ -22820,6 +22819,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentBehaviour: 3
   target: {fileID: 562808774}
+  stateText: Following
   nextWayPoint: 3
   speed: 200
   force: 0
@@ -26734,6 +26734,10 @@ Prefab:
       propertyPath: mouseObject
       value: 
       objectReference: {fileID: 137425850}
+    - target: {fileID: 11498472, guid: 574623e71adff4107a6b16e8acc77107, type: 2}
+      propertyPath: botObject
+      value: 
+      objectReference: {fileID: 1718867266}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 574623e71adff4107a6b16e8acc77107, type: 2}
   m_RootGameObject: {fileID: 912148102}

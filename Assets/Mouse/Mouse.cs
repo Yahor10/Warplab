@@ -8,8 +8,6 @@ public class Mouse : MonoBehaviour {
 	GameObject[] enemies;
 
 	FlyBotAi bot;
-
-	public string botStateText = "";
 	
 	// Use this for initialization
 	void Start () {
@@ -43,7 +41,7 @@ public class Mouse : MonoBehaviour {
 	{     
 
 		if (clicked) {
-			if (botStateText == "Moving to point") {
+			if (bot.stateText == "Moving to point") {
 				Vector3 pointToFollow = Camera.main.ScreenToWorldPoint (new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 				bot.startFollowPoint(pointToFollow);
 			}
@@ -119,19 +117,19 @@ public class Mouse : MonoBehaviour {
 	
 	
 	public void startAttackSelectedTarget(){
-		botStateText = "Attacking";
+		bot.stateText = "Attacking";
 		bot.setAttackTarget (target);
 	}
 
 	public void startFollowingTarget(){
-		botStateText = "Following";
+		bot.stateText = "Following";
 		bot.setState (FlyBotBehaviour.Behavior.follow);
 		target = null;
 		bot.setAttackTarget (target);
 	}
 
 	public void startMovingToPoint() {
-		botStateText = "Moving to point";
+		bot.stateText = "Moving to point";
 	}
 
 }

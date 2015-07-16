@@ -13,6 +13,7 @@ public class FlyBotAi : FlyBotBehaviour {
 	
 	public Transform target;
 	
+	public string stateText = "Following";
 	
 	public float nextWayPoint = 2;
 	public Path path;

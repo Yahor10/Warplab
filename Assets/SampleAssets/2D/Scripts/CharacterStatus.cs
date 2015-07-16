@@ -3,28 +3,25 @@ using System.Collections;
 
 public class CharacterStatus : MonoBehaviour {
 
-
 	public int HealthPoint = 20;
 	
 	SpawnPlayer spawnScript;
-	// Use this for initialization
+
 	void Start () {		 
 		GameObject gameObject = GameObject.FindGameObjectWithTag ("GameMaster");
 		spawnScript = gameObject.GetComponent<SpawnPlayer> ();
-	}
-	
-	// Update is called once per frame
-	void Update () {
 	}
 
 	Transform pl;
 	private void OnTriggerEnter2D(Collider2D other)
 	{
 		if (other.tag.Equals ("EnemyMissle")) {
-			HealthPoint -=20;
+			if (HealthPoint > 0) {
+				HealthPoint -=20;
+			}
 		}
 
-		if (HealthPoint == 0) {
+		if (HealthPoint <= 0) {
 			StartCoroutine (Respawn ());
 		}
 	}
@@ -34,6 +31,7 @@ public class CharacterStatus : MonoBehaviour {
 		renderer.enabled = false;
 		yield return new WaitForSeconds(2);
 		Debug.Log ("respawn");
+		HealthPoint = 20;
 		renderer.enabled = true;
 		spawnScript.reloadLevel ();
 	}
