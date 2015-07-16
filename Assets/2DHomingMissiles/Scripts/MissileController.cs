@@ -66,6 +66,8 @@ namespace TwoDHomingMissiles
             currentVelocity = Vector2.zero;
         }
 
+		PauseGame pauseGame;
+
         // Use this for initialization
         private void Start()
         {
@@ -74,6 +76,9 @@ namespace TwoDHomingMissiles
             error = new Vector2(0, 0);
             currentVelocity = new Vector2(0, 0);
             sForce = new Vector2(0, 0);
+
+			GameObject gameMaster =  GameObject.FindGameObjectWithTag ("GameMaster");
+			pauseGame = gameMaster.GetComponent<PauseGame> ();
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -153,6 +158,10 @@ namespace TwoDHomingMissiles
         // Update is called once per frame
         private void Update()
         {
+			if (pauseGame.paused) {
+				return;
+			}
+
             if (target != null)
             {
                 if (usesFuel)

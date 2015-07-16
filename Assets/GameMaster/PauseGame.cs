@@ -4,12 +4,16 @@ using System.Collections;
 public class PauseGame : MonoBehaviour
 {
 
+	public Canvas canvas;
+
 	// Use this for initialization
-	private bool paused; 
+	public bool paused; 
 	void Start ()
 	{
 	
 		paused = false;
+		;
+
 	}
 	
 	// Update is called once per frame
@@ -20,9 +24,11 @@ public class PauseGame : MonoBehaviour
 		}
 
 		if (paused) {
+			canvas.enabled = true;
 			Time.timeScale = 0;
 		} else {
 			Time.timeScale = 1;
+			canvas.enabled = false;
 		}
 
 		if ( Input.GetMouseButton( 1 ) )

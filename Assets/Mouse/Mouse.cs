@@ -26,6 +26,7 @@ public class Mouse : MonoBehaviour {
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Mouse0)) {
 			if(!clicked){
+				enemies = GameObject.FindGameObjectsWithTag("Enemy");
 				startVector = new Vector2(Input.mousePosition.x, Screen.height - Input.mousePosition.y);
 				
 			}			
@@ -45,6 +46,12 @@ public class Mouse : MonoBehaviour {
 			Rect rect = new Rect (startVector.x, startVector.y, vd.x, vd.y);
 			
 			foreach (GameObject enemy in enemies) {
+
+				if(enemy == null){
+					Debug.LogError("enemy is destroed");
+					continue;
+				}
+
 				Vector3 pos = Camera.main.WorldToScreenPoint (enemy.transform.position);
 				pos.y = Screen.height - pos.y;	
 				EnemyAi botAi = enemy.GetComponent<EnemyAi>();

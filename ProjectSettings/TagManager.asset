@@ -20,6 +20,9 @@ TagManager:
   - GameMaster
   - FogOFWar
   - 
+  - ElevatorPlatformPusher
+  - LaserPointer
+  - 
   Builtin Layer 0: Default
   Builtin Layer 1: TransparentFX
   Builtin Layer 2: Ignore Raycast
@@ -65,11 +68,19 @@ TagManager:
     userID: 3
     uniqueID: 3940858523
     locked: 0
+  - name: Background
+    userID: 1
+    uniqueID: 1093696345
+    locked: 0
   - name: UI
     userID: 4
     uniqueID: 771169021
     locked: 0
-  - name: Background
-    userID: 1
-    uniqueID: 1093696345
+  - name: FogOfWar
+    userID: 5
+    uniqueID: 1756284385
+    locked: 0
+  - name: Obstacle
+    userID: 6
+    uniqueID: 3353901187
     locked: 0

@@ -47,7 +47,6 @@ public class EnemyMeleeAi : EnemyAi
 	
 	// Update is called once per frame
 	void Update () {
-		//transform.LookAt(character);
 		float dist = 0.0f;
 		
 		switch (currentState) {

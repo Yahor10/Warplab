@@ -15,7 +15,7 @@ public class FogOfWarManager : MonoBehaviour
 	/// Should be a power of 2.
 	/// </summary>
 	[SerializeField]
-	private int _textureSize = 256;
+	private int _textureSize = 1024;
 	[SerializeField]
 	private Color _fogOfWarColor;
 	[SerializeField]
@@ -83,8 +83,6 @@ public class FogOfWarManager : MonoBehaviour
 		
 		_centerPixel = new Vector2(_textureSize * 0.5f, _textureSize * 0.5f);
 
-		Debug.Log ("Awake fog manager" + _pixelsPerUnit);
-
 	}
 	
 	public void RegisterRevealer(Revelear revealer)
@@ -139,16 +137,10 @@ public class FogOfWarManager : MonoBehaviour
 
 				var pixelPosX = Mathf.RoundToInt(translatedPos.x * _pixelsPerUnit + _centerPixel.x);
 				var pixelPosY = Mathf.RoundToInt(translatedPos.y * _pixelsPerUnit + _centerPixel.y);
-
-				Debug.Log("pixelPosX" + pixelPosX);
-				Debug.Log("pixelPosY" + pixelPosY);
-
-				
 				CreateCircle(pixelPosX, pixelPosY, revealer.radius);
 			}
-
 		}
-	
+
 		
 		_texture.SetPixels(_pixels);
 		_texture.Apply(false);

@@ -5,7 +5,7 @@ using Pathfinding;
 [RequireComponent (typeof (Rigidbody2D))]
 [RequireComponent (typeof (Seeker))]
 
-public class FlyEnemyScriptAi : MonoBehaviour {
+public class FlyEnemyScriptAi : EnemyAi {
 
 	private Seeker seeker;
 	private Rigidbody2D body;
@@ -31,19 +31,40 @@ public class FlyEnemyScriptAi : MonoBehaviour {
 		seeker.StartPath (transform.position, target.position, OnPathComplete);
 
 		StartCoroutine (UpdatePath ());
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	
-		if (Input.GetMouseButtonDown (0)) {
+		float dist = 0.0f;
+		
+		switch (currentState) {
+		case Behavior.idle:
+			dist = Vector2.Distance (target.position, transform.position);
+			if (dist <= 10) {
+				currentState = Behavior.moveToPlayer;			// player founded
+			}
+			break;
+		case Behavior.moveToPlayer:
+			dist = Vector2.Distance (target.position, transform.position);
+			
+			if (dist <= 7) {
+				currentState = Behavior.attack;
+			}
+			
+			if (dist >= 10) {
+				currentState = Behavior.returnHome;
+				return;
+			}
+
+			break;
 		}
 	}
 
 	private bool pathisEnded;
 
 	public void FixedUpdate(){
-		if (target == null) {
+		if (target == null || currentState == Behavior.idle) {
 			return ;
 		}
 
@@ -52,7 +73,6 @@ public class FlyEnemyScriptAi : MonoBehaviour {
 		}
 
 		if (currWayPoint >= path.vectorPath.Count) {
-
 
 			if(pathisEnded){
 				return;
@@ -85,7 +105,6 @@ public class FlyEnemyScriptAi : MonoBehaviour {
 	IEnumerator UpdatePath()
 	{
 		if (target == null) {
-			Debug.LogError("target is null");
 			return false;
 		}
 		seeker.StartPath (transform.position, target.position, OnPathComplete);
