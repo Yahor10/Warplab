@@ -4,14 +4,15 @@ using UnitySampleAssets._2D;
 
 
 public class Mouse : MonoBehaviour {
+
 	GameObject[] enemies;
 
 	FlyBotAi bot;
+
+	public string botStateText = "";
 	
 	// Use this for initialization
 	void Start () {
-		
-		
 		if (enemies == null)
 			enemies = GameObject.FindGameObjectsWithTag("Enemy");
 		
@@ -42,6 +43,11 @@ public class Mouse : MonoBehaviour {
 	{     
 
 		if (clicked) {
+			if (botStateText == "Moving to point") {
+				Vector3 pointToFollow = Camera.main.ScreenToWorldPoint (new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+				bot.startFollowPoint(pointToFollow);
+			}
+
 			vd = new Vector2 (Input.mousePosition.x - startVector.x, Screen.height - Input.mousePosition.y - startVector.y);
 			Rect rect = new Rect (startVector.x, startVector.y, vd.x, vd.y);
 			
@@ -113,13 +119,19 @@ public class Mouse : MonoBehaviour {
 	
 	
 	public void startAttackSelectedTarget(){
+		botStateText = "Attacking";
 		bot.setAttackTarget (target);
 	}
 
 	public void startFollowingTarget(){
+		botStateText = "Following";
 		bot.setState (FlyBotBehaviour.Behavior.follow);
 		target = null;
 		bot.setAttackTarget (target);
+	}
+
+	public void startMovingToPoint() {
+		botStateText = "Moving to point";
 	}
 
 }
